@@ -9,15 +9,18 @@ The **CPU** requirements are pretty low, you can run it on a Raspberry Pi 1 A (A
 
 As URLs as dedicated domain (e.g. `wiki.domain.tld`) is required, it can not be mapped into a subfolder.
 
-## Using docker
+## Using docker cli
 
 An Otter Wiki is published as a Docker image on Docker hub as [`redimp/otterwiki`](https://hub.docker.com/r/redimp/otterwiki). The stable images are build for the plattforms `amd64`, `arm64`, `armv7` and `armv6`. 
 
 Make sure you have [docker](https://docs.docker.com/engine/install/) installed.
 
-To run an otter wiki via docker, listening on port 8080 and using a local directory for data persistency, use the following command:
-```
-docker run -p 8080:80 --name otterwiki redimp/otterwiki:2.0
+To run an otter wiki via docker cli, listening on port 8080 and using a local directory for data persistency, use the following command:
+```bash
+docker run --name otterwiki \
+	-p 8080:80 \
+    -v $PWD/app-data:/app-data \
+    redimp/otterwiki:2.0
 ```
 Open the wiki via http://127.0.0.1:8080 if you are running the docker command on your machine.
 
