@@ -16,7 +16,7 @@ This is the home of **An Otter Wiki**. A minimalstic wiki powered by python, mar
 
 ### Demo
 
-- Want to try it our yourself? Please check out the [Demo](http://demo.otterwiki.com).
+- Want to try it out yourself? Please check out the [Demo](http://demo.otterwiki.com).
 - Looking for [[Examples|examples]] how to use An Otter Wiki? You came to the right place. Various examples on how to use this wiki can be found [[here|examples]].
 
 ### Installation
