@@ -1,5 +1,7 @@
 # Configuration
 
+The [[Installation Guide|Installation]] can be found [[here|Installation]].
+
 An Otter Wiki is configured in the application via the <i class="fas fa-cogs"></i>
  **Settings** menu
 as admin user. Alternatively you configure the variables via the 
