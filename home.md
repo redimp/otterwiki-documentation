@@ -25,7 +25,7 @@ Please read the [installation guide](/Installation) to get started, proceed to t
 
 ### Contributing
 
-Thank you for considering to contribute to An Otter Wiki! If you ran into an issue or want to request a feature, please reach out via [github](https://github.com/redimp/otterwiki/issues). Or fork the [repository](https://github.com/redimp/otterwiki/) develop the feature and submit a pull request.
+Thank you for considering to contribute to An Otter Wiki! If you ran into an issue or want to request a feature, please reach out via <i class="fab fa-github"></i> [github](https://github.com/redimp/otterwiki/issues). Or fork the [repository](https://github.com/redimp/otterwiki/) develop the feature and submit a pull request.
 
 ### Licence
 
