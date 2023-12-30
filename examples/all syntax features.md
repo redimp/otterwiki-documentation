@@ -16,19 +16,23 @@ line, a block of
 words will be rendered
 as paragraph.
 
-Individuals words or sentences can be emphasized as `monospace`, **bold**, _italic_ or **_bold and italic_**. Or go wild and ==mark== or ~~strike out~~ words.
+Individuals words or sentences can be emphasized as `monospace`, **bold**, _italic_ 
+or **_bold and italic_**. Or go wild and ==mark== or ~~strike out~~ words.
 
 An Otter Wiki stores all pages in UTF-8 in a git repository. With UTF-8 you get emojis
 like 🥳 and 🎆, that all modern browsers can display.
 
-If you don't want to user a header for seperating parapgraphs, or a header is just not enough, add a horizontal line:
+If you don't want to user a header for seperating paragraphs,
+or a header is just not enough, add a horizontal line:
 
 ---
 
 ## Links
 
-Some example for links in the middle of a paragraph. [A link to the otterwiki github project](https://github.com/redimp/otterwiki), folloed by an auto linked url to http://example.com, followed by a mail address <mailto:mail@example.com>. Commonly 
-used are links inside the wiki, e.g. one pointing [[Home]].
+Some example for links in the middle of a paragraph.
+[A link to the otterwiki github project](https://github.com/redimp/otterwiki), 
+followed by an auto linked url to http://example.com, followed by a mail address 
+<mailto:mail@example.com>. Commonly used are links inside the wiki, e.g. one pointing [[Home]].
 
 ## Footnotes
 
@@ -140,7 +144,8 @@ List can nest lists and other block.
 
 ## Math or LaTeX
 
-If you want to share math formulas in your wiki, [MathJax](https://www.mathjax.org/) comes to the rescue. For example:
+If you want to share math formulas in your wiki, [MathJax](https://www.mathjax.org/) comes
+to the rescue. For example:
 
 When `$a \ne 0$`, there are two solutions to `$ax^2 + bx + c = 0$` and they are
 ```math
