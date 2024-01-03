@@ -21,7 +21,7 @@ To run an otter wiki via docker cli, listening on port 8080 and using a local di
 docker run --name otterwiki \
 	-p 8080:80 \
     -v $PWD/app-data:/app-data \
-    redimp/otterwiki:2.0
+    redimp/otterwiki:2
 ```
 Open the wiki via http://127.0.0.1:8080 if you are running the docker command on your machine.
 
@@ -41,7 +41,7 @@ The recommended way of running An Otter Wiki is via `docker compose`.
     version: '3'
     services:
       otterwiki:
-        image: redimp/otterwiki:2.0
+        image: redimp/otterwiki:2
         restart: unless-stopped
         ports:
           - 8080:80
@@ -61,7 +61,7 @@ Alternativly you can configure the application using environment variables, for 
 version: '3'
 services:
   otterwiki:
-    image: redimp/otterwiki:2.0
+    image: redimp/otterwiki:2
     restart: unless-stopped
     ports:
     - 8080:80
