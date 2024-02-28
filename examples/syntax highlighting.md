@@ -10,7 +10,7 @@ A fenced code block with langeuage yaml, like
     version: '3'
     services:
       otterwiki:
-        image: redimp/otterwiki:2.0
+        image: redimp/otterwiki:2
         ports:
         - 8080:80
     ```
@@ -21,7 +21,7 @@ will be rendered as
 version: '3'
 services:
   otterwiki:
-    image: redimp/otterwiki:2.0
+    image: redimp/otterwiki:2
     ports:
     - 8080:80
 ```
