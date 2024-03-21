@@ -4,7 +4,7 @@ On this page you can find examples on how An Otter Wiki highlights code block wi
 
 A code block is fenced with three backticks `` ``` `` on the line before and after the code block. To add syntax highlighting specify the language next to the backticks of the first line, e.g.
 
-A fenced code block with langeuage yaml, like
+A fenced code block with language yaml, like
 
     ```yaml
     version: '3'
@@ -61,7 +61,7 @@ long long int fibb(int n) {
 		fnow = fnext;
 		fnext = tempf;
 		}
-		return fnext;	
+		return fnext;
 }
 ```
 
