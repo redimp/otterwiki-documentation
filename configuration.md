@@ -4,7 +4,7 @@ The [[Installation Guide|Installation]] can be found [[here|Installation]].
 
 An Otter Wiki is configured in the application via the <i class="fas fa-cogs"></i>
  **Settings** menu
-as admin user. Alternatively you configure the variables via the 
+as admin user. Alternatively you configure the variables via the
 `settings.cfg`, see below. The docker image respects the environment variables and
 configures the `settings.cfg` accordingly.
 
@@ -18,6 +18,7 @@ configures the `settings.cfg` accordingly.
 | `SITE_ICON`      | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
 
 
+
 ### Permission configuration
 
 | Variable         |  Example        | Description                                  |
@@ -25,6 +26,7 @@ configures the `settings.cfg` accordingly.
 | `READ_ACCESS`    | `'ANONYMOUS'`   | Read access to wiki pages and attachments    |
 | `WRITE_ACCESS`   | `'REGISTERED'`  | Write access to wiki pages                   |
 | `ATTACHMENT_ACCESS` | `'APPROVED'` | Write acccess to attachments                 |
+| `DISABLE_REGISTRATION` | `False` | With `DISABLE_REGISTRATION=True` new users can not sign-up for a new account |
 | `AUTO_APPROVAL`  | `False`         | With `AUTO_APPROVAL=True` users are approved on registration |
 | `EMAIL_NEEDS_CONFIRMATION`  | `True`         | With `EMAIL_NEEDS_CONFIRMATION=True` users have to confirm their email address |
 | `NOTIFY_ADMINS_ON_REGISTER` | `True`  | Notify admins if a new user is registered |
@@ -34,9 +36,32 @@ Users that registered via email and are logged in are `REGISTERED`, users approv
 the settings menu by an admin are `APPROVED`. In addition to the `APPROVED` flag the `ADMIN`
 flag can be set. Users with the `ADMIN` flag can edit (and approve) other users. The first registered user is flagged as admin.
 
+
+### Sidebar Preferences
+
+| Variable                | Example    | Description    |
+| ----------------------- | ---------- | -------------- |
+| `SIDEBAR_MENUTREE_MODE` | `'SORTED'` | Mode of the sidebar, see below. |
+| `SIDEBAR_MENUTREE_MAXDEPTH` | `unlimited` | Limit the depth of the pages displayed by any number. |
+
+For `SIDEBAR_MENUTREE_MODE` pick one of
+
+- `NONE` (or empty) no sidebar displayed
+- `SORTED` Directories and pages, sorted
+- `DIRECTORIES_GROUPED` Directories and pages, with directories grouped first
+- `DIRECTORIES_ONLY`List directories only.
+
+### Content and Editing Preferences
+
+| Variable                | Example    | Description    |
+| ----------------------- | ---------- | -------------- |
+| `COMMIT_MESSAGE` | `'REQUIRED'` | set `COMMIT_MESSAGE='OPTIONAL'` if commit messages are optional |
+| `RETAIN_PAGE_NAME_CASE` | `False` | set `RETAIN_PAGE_NAME_CASE=True` to
+| `GIT_WEB_SERVER` | `False` | Set to to true to allow cloning the wiki via git+http(s) |
+
 ### Mail configuration
 
-An Otter Wiki is using [Flask-Mail](https://pythonhosted.org/Flask-Mail/). 
+An Otter Wiki is using [Flask-Mail](https://pythonhosted.org/Flask-Mail/).
 
 | Variable         |  Example        | Description                                  |
 |------------------|-----------------|----------------------------------------------|
@@ -47,6 +72,28 @@ An Otter Wiki is using [Flask-Mail](https://pythonhosted.org/Flask-Mail/).
 | `MAIL_PASSWORD`  | `'PASSWORD'`    | Password for the mail account                |
 | `MAIL_USE_TLS`   | `False`         | Use TLS encrytion                            |
 | `MAIL_USE_SSL`   | `True`          | Use SSL encryption                           |
+
+### Authentication configuration
+
+| Variable         |  Example        | Description                                  |
+|------------------|-----------------|----------------------------------------------|
+| `AUTH_METHOD` | `'SIMPLE'` | See below. |
+
+Per default an Otter Wiki uses a local database for storing authentication information.
+
+#### Authentication with `PROXY_HEADER`s
+
+With `AUTH_METHOD='PROXY_HEADER'` an Otter Wiki expects the headers
+
+- `x-otterwiki-name`
+- `x-otterwiki-email`
+- `x-otterwiki-permissions`
+
+to be set by the proxy service using forward authentication.
+
+The headers `x-otterwiki-name`and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma seperated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
+
+A simplified proof of concept can be found on github: [otterwiki/docs/auth_examples/header-auth](https://github.com/redimp/otterwiki/tree/main/docs/auth_examples/header-auth).
 
 ### Advanced configuration
 
