@@ -40,4 +40,4 @@ This is an example custom.css that uses the serif font
 }
 ```
 
-![](/Theme%20Customization/a/baskervville-page.png)
+![](/Customization/a/baskervville-page.png)
