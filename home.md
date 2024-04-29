@@ -3,7 +3,7 @@
 > *First of all, there are no otters here. I'm utterly sorry about that. When I started this project, the name was given by the decision to write an otter wiki.
 > -- Ralph*
 
-This is the home of **An Otter Wiki**. A minimalstic wiki powered by python, markdown and git.
+This is the home of **An Otter Wiki**. A minimalistic wiki powered by python, markdown and git.
 
 ### Notable Features
 
