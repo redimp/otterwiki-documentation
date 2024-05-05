@@ -1,6 +1,6 @@
 # Installation
 
-The recommend way of running An Otter Wiki is via [[docker compose|Installation#using-docker-compose]]. For deploying in kubernetes via [[Helm|Installation#helm]].
+The recommend way of running An Otter Wiki is via [[docker compose|Installation#using-docker-compose]]. For deploying in kubernetes via [[Helm|Installation#kubernetes]].
 
 ## Requirements
 
