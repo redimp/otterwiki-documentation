@@ -21,7 +21,7 @@ This is the home of **An Otter Wiki**. A minimalistic wiki powered by python, ma
 
 ### Installation
 
-Please read the [installation guide](/Installation) to get started, proceed to the [configuration guide](/Configuration)
+Please read the [installation guide](/Installation) to get started, proceed to the [configuration guide](/Configuration).
 
 ### Contributing
 

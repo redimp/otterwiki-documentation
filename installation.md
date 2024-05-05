@@ -1,6 +1,6 @@
 # Installation
 
-The recommend way of running An Otter Wiki is via [[docker compose|Installation#using-docker-compose]].
+The recommend way of running An Otter Wiki is via [[docker compose|Installation#using-docker-compose]]. For deploying in kubernetes via [[Helm|Installation#helm]].
 
 ## Requirements
 
@@ -12,20 +12,20 @@ Client requirement: Javascript must be activated in your browser to use the wiki
 
 ## Using docker cli
 
-An Otter Wiki is published as a Docker image on Docker hub as [`redimp/otterwiki`](https://hub.docker.com/r/redimp/otterwiki). The stable images are build for the plattforms `amd64`, `arm64`, `armv7` and `armv6`. 
+An Otter Wiki is published as a Docker image on Docker hub as [`redimp/otterwiki`](https://hub.docker.com/r/redimp/otterwiki). The stable images are build for the plattforms `amd64`, `arm64`, `armv7` and `armv6`.
 
 Make sure you have [docker](https://docs.docker.com/engine/install/) installed.
 
 To run an otter wiki via docker cli, listening on port 8080 and using a local directory for data persistency, use the following command:
 ```bash
 docker run --name otterwiki \
-	-p 8080:80 \
+    -p 8080:80 \
     -v $PWD/app-data:/app-data \
     redimp/otterwiki:2
 ```
 Open the wiki via http://127.0.0.1:8080 if you are running the docker command on your machine.
 
-You can configure the application with environment variables e.g. 
+You can configure the application with environment variables e.g.
 ```
 -e SITE_NAME="My Wiki" -e SITE_DESCRIPTION="An otter wiki run via docker"
 ```
@@ -33,7 +33,7 @@ For all configuration options please see [[Configuration]].
 
 ## Using docker compose
 
-The recommended way of running An Otter Wiki is via `docker compose`. 
+The recommended way of running An Otter Wiki is via `docker compose`.
 
 1. Create a `docker-compose.yaml` file
 
@@ -70,10 +70,10 @@ services:
     environemnt:
       MAIL_DEFAULT_SENDER: no-reply@example.com
       MAIL_SERVER: smtp.server.tld
-	  MAIL_PORT: 465
+      MAIL_PORT: 465
       MAIL_USERNAME: otterwiki@example.com
-	  MAIL_PASSWORD: somepassword
-	  MAIL_USE_SSL: True
+      MAIL_PASSWORD: somepassword
+      MAIL_USE_SSL: True
 ```
 
 For all configuration options please see [[Configuration]].
@@ -82,11 +82,28 @@ For all configuration options please see [[Configuration]].
 
 An Otter Wiki can be run with `podman` and `podman-compose` in the same way as with` docker` and `docker compose` please see above.
 
+## Kubernetes
+
+An Otter Wiki can be conveniently deployed on kubernetes using the official Helm Chart.
+For example you can create a new deployment with an ingress on `otterwiki.example.com` with
+
+```bash
+helm install otterwiki-example \
+  --set config.SITE_DESCRIPTION="An Otter Wiki deployed with Helm" \
+  --set ingress.enabled=true \
+  --set ingress.hosts[0].host="otterwiki.example.com" \
+  oci://registry-1.docker.io/redimp/otterwiki
+```
+
+Please refer to the [chart](https://github.com/redimp/otterwiki/tree/main/helm) for
+a detailed README with instructions, more examples and informations about the default values
+of the chart.
+
 ## From source as WSGI application with uwsgi
 
 1. Install the prerequisites
 
-	i. Debian / Ubuntu
+    i. Debian / Ubuntu
     ```
     apt install git build-essential python3-dev python3-venv
     ```
@@ -95,9 +112,9 @@ An Otter Wiki can be run with `podman` and `podman-compose` in the same way as w
     yum install make python3-devel
     ```
 2. Clone the otterwiki repository and enter the directory
-	```
+    ```
     git clone https://github.com/redimp/otterwiki.git
-	cd otterwiki
+    cd otterwiki
     ```
 3. Create and initialize the repository where the otterwiki data lives
     ```bash
@@ -106,19 +123,19 @@ An Otter Wiki can be run with `podman` and `podman-compose` in the same way as w
     git init app-data/repository
     ```
 4. Create a minimal `settings.cfg` e.g. via
-	```bash
+    ```bash
     echo "REPOSITORY='${PWD}/app-data/repository'" >> settings.cfg
-	echo "SQLALCHEMY_DATABASE_URI='sqlite:///${PWD}/app-data/db.sqlite'" >> settings.cfg
-	echo "SECRET_KEY='$(echo $RANDOM | md5sum | head -c 16)'" >> settings.cfg 
+    echo "SQLALCHEMY_DATABASE_URI='sqlite:///${PWD}/app-data/db.sqlite'" >> settings.cfg
+    echo "SECRET_KEY='$(echo $RANDOM | md5sum | head -c 16)'" >> settings.cfg
     ```
 5. Create a virtual environment and install An Otter Wiki
-	```
+    ```
     python3 -m venv venv
     ./venv/bin/pip install -U pip uwsgi
     ./venv/bin/pip install .
     ```
 6. Run uwsgi listening on the localhost port 8080
-	```bash
+    ```bash
     export OTTERWIKI_SETTINGS=$PWD/settings.cfg
     ./venv/bin/uwsgi --http 127.0.0.1:8080 --master -enable-threads --die-on-term -w otterwiki.server:app
     ```
@@ -223,7 +240,7 @@ It's assumed that An Otter Wiki is running either in a docker container or as a 
 ### Apache on RHEL, CentOS, Rocky and derivates
 
 - Install apache2 via `dnf install httpd`
-- Start apache2 and enable at boot: `sudo systemctl enable --now httpd` 
+- Start apache2 and enable at boot: `sudo systemctl enable --now httpd`
 - Create the `otterwiki.conf` config file in `/etc/httpd/conf.d/`
 - With SELinux enabled, make sure httpd can connect using `setsebool -P httpd_can_network_connect on`
 - Restart apache2 via `systemctl restart httpd`
@@ -238,7 +255,7 @@ After [installing](https://caddyserver.com/docs/install) caddy, configure `/etc/
 
 ```
 domain.tld {
-	reverse_proxy localhost:8080
+    reverse_proxy localhost:8080
 }
 ```
 
