@@ -181,11 +181,12 @@ server {
     server_name wiki.domain.tld;
     listen 80;
     location / {
-       proxy_set_header Host $http_host;
-       proxy_set_header X-Real-IP $remote_addr;
-       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-       proxy_set_header X-Forwarded-Host $http_host;
-       proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_pass http://127.0.0.1:8080;
+        client_max_body_size 64M; # for attachments of a size up to 64 Mb
     }
 }
 ```
