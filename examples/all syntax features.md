@@ -32,7 +32,7 @@ or a header is just not enough, add a horizontal line:
 Some example for links in the middle of a paragraph.
 [A link to the otterwiki github project](https://github.com/redimp/otterwiki), 
 followed by an auto linked url to http://example.com, followed by a mail address 
-<mailto:mail@example.com>. Commonly used are links inside the wiki, e.g. one pointing [[Home]].
+<mailto:mail@example.com>. Commonly used are links inside the wiki, e.g. one pointing [[Home]] or to another example [[Syntax Highlighting|Examples/Syntax Highlighting]].
 
 ## Footnotes
 
