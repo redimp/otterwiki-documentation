@@ -138,7 +138,7 @@ of the chart.
 6. Run uwsgi listening on the localhost port 8080
     ```bash
     export OTTERWIKI_SETTINGS=$PWD/settings.cfg
-    ./venv/bin/uwsgi --http 127.0.0.1:8080 --master -enable-threads --die-on-term -w otterwiki.server:app
+    ./venv/bin/uwsgi --http 127.0.0.1:8080 --master --enable-threads --die-on-term -w otterwiki.server:app
     ```
 7. Open http://127.0.0.1:8080 in your browser.
 8. Register your account. The first account is an admin-account with access to the application settings.
@@ -153,7 +153,7 @@ of the chart.
   User=www-data
   Group=www-data
   WorkingDirectory=/path/to/an/otterwiki
-  ExecStart=/path/to/an/otterwiki/env/bin/uwsgi --http 127.0.0.1:8080 -enable-threads --die-on-term -w otterwiki.server:app
+  ExecStart=/path/to/an/otterwiki/env/bin/uwsgi --http 127.0.0.1:8080 --enable-threads --die-on-term -w otterwiki.server:app
   SyslogIdentifier=otterwiki
 
   [Install]
