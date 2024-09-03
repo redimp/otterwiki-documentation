@@ -3,10 +3,12 @@
 The [[Installation Guide|Installation]] can be found [[here|Installation]].
 
 An Otter Wiki is configured in the application via the <i class="fas fa-cogs"></i>
- **Settings** menu
-as admin user. Alternatively you configure the variables via the
-`settings.cfg`, see below. The docker image respects the environment variables and
-configures the `settings.cfg` accordingly.
+ **Settings** interface as admin user. Alternatively you configure the variables via the
+`settings.cfg` or via environment variables.
+
+*Please note:* What is set in the config file `settings.cfg` will be overwritten first
+by the environment variables if they are set and second by the settings configured
+via the settings interface, which are stored in the database. In brief: `Settings Interface > Environment Variables > settings.cfg`.
 
 ### Branding
 
@@ -16,7 +18,6 @@ configures the `settings.cfg` accordingly.
 | `SITE_LOGO`      | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
 | `SITE_DESCRIPTION` | `'A minimalistic wiki powered by python, markdown and git.'` | The default description used in `<meta>` tags |
 | `SITE_ICON`      | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
-
 
 
 ### Permission configuration
