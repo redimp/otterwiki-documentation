@@ -199,3 +199,23 @@ or a
 
 In case a warning not warning enough.
 :::
+
+---
+
+Another options are alerts:
+
+> [!NOTE]
+> Useful for highlighting special
+> information.
+
+> [!TIP]
+> Giving pointers.
+
+> [!IMPORTANT]
+> Raise attention.
+
+> [!WARNING]
+> Add a **formatted** warning.
+
+> [!CAUTION]
+> If a warning is _simply_ not enough.
