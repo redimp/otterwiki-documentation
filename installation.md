@@ -84,6 +84,25 @@ An Otter Wiki can be run with `podman` and `podman-compose` in the same way as w
 > If you are running podman in an SELinux environment, please check the
 > [[FAQ|FAQ#environments-with-selinux]] section about environments with SELinux.
 
+## The `-slim` image variant
+
+The image of An Otter Wiki runs as root user (with uid=0) and comes bundled with nginx that listens on port 80. The lighter image variant is the `-slim` image: It's based on alpine, has no nginx bundled and an uWSGI server is running as unprivileged `www-data` user (with uid=33). uWSGI serves both An Otter Wiki and the static files and listens on port 8080.
+
+Except for the exposes port, the images are interchangeable. For example a `docker-compose.yaml` running the most recent version of a `-slim` image:
+
+```yaml
+services:
+  otterwiki:
+    image: redimp/otterwiki:2-slim
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app-data:/app-data
+```
+
+The `redimp/otterwiki:2-slim` image is as stable as the 'fat' image, after all it is what is running [otterwiki.com](https://otterwiki.com).
+
 ## Kubernetes
 
 An Otter Wiki can be conveniently deployed on kubernetes using the official Helm Chart.
