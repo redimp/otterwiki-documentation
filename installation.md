@@ -82,6 +82,10 @@ For all configuration options please see [[Configuration]].
 
 An Otter Wiki can be run with `podman` and `podman-compose` in the same way as with` docker` and `docker compose` please see above.
 
+> [!IMPORTANT]
+> If you are running podman in an SELinux environment, please check the
+> [[FAQ|FAQ#environments-with-selinux]] section about environments with SELinux.
+
 ## Kubernetes
 
 An Otter Wiki can be conveniently deployed on kubernetes using the official Helm Chart.
