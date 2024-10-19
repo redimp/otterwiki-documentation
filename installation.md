@@ -38,7 +38,6 @@ The recommended way of running An Otter Wiki is via `docker compose`.
 1. Create a `docker-compose.yaml` file
 
     ```yaml
-    version: '3'
     services:
       otterwiki:
         image: redimp/otterwiki:2
@@ -58,7 +57,6 @@ The recommended way of running An Otter Wiki is via `docker compose`.
 Alternativly you can configure the application using environment variables, for example:
 
 ```yaml
-version: '3'
 services:
   otterwiki:
     image: redimp/otterwiki:2
