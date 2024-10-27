@@ -142,13 +142,13 @@ of the chart.
     ```bash
     mkdir -p app-data/repository
     # initialize the empty repository
-    git init app-data/repository
+    git init -b main app-data/repository
     ```
 4. Create a minimal `settings.cfg` e.g. via
     ```bash
     echo "REPOSITORY='${PWD}/app-data/repository'" >> settings.cfg
     echo "SQLALCHEMY_DATABASE_URI='sqlite:///${PWD}/app-data/db.sqlite'" >> settings.cfg
-    echo "SECRET_KEY='$(echo $RANDOM | md5sum | head -c 16)'" >> settings.cfg
+    echo "SECRET_KEY='$(python -c 'import secrets; print(secrets.token_hex())')'" >> settings.cfg
     ```
 5. Create a virtual environment and install An Otter Wiki
     ```
@@ -173,15 +173,22 @@ of the chart.
   [Service]
   User=www-data
   Group=www-data
-  WorkingDirectory=/path/to/an/otterwiki
+  Environment=OTTERWIKI_SETTINGS=/path/to/the/settings.cfg
   ExecStart=/path/to/an/otterwiki/env/bin/uwsgi --http 127.0.0.1:8080 --enable-threads --die-on-term -w otterwiki.server:app
   SyslogIdentifier=otterwiki
 
   [Install]
   WantedBy=multi-user.target
   ```
+  
+  make sure to adapt the `/path/to` and that the configured User can read and write the database and the repository folder. 
 
-It's highly recommended to use a webserver as reverse proxy to connect to  uwsgi, see [Reverse Proxy](#reverse-proxy) below.
+11. Run `systemctl daemon-reload` and `systemctl start otterwiki.service`, check `systemctl status otterwiki.service` for errors.
+
+> [!NOTE]
+> It's highly recommended to use a webserver as reverse proxy to connect to  uwsgi, see [Reverse Proxy](#reverse-proxy) below.
+
+If you want to skip the reverse proxy consider to bind uwsgi not to just the local ip `127.0.0.1`, but to all ips of the host running An Otter Wiki with `--http 0.0.0.0:8080`.
 
 # Reverse Proxy
 
