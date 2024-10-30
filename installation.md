@@ -65,7 +65,7 @@ services:
     - 8080:80
     volumes:
     - ./app-data:/app-data
-    environemnt:
+    environment:
       MAIL_DEFAULT_SENDER: no-reply@example.com
       MAIL_SERVER: smtp.server.tld
       MAIL_PORT: 465
