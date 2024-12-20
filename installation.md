@@ -106,6 +106,13 @@ The `redimp/otterwiki:2-slim` image is as stable as the 'fat' image, after all i
 ## Kubernetes
 
 An Otter Wiki can be conveniently deployed on kubernetes using the official Helm Chart.
+```bash
+# add the helm chart repository
+helm repo add otterwiki https://charts.otterwiki.com
+# update the repository
+helm repo update otterwiki
+```
+
 For example you can create a new deployment with an ingress on `otterwiki.example.com` with
 
 ```bash
@@ -114,7 +121,7 @@ helm install otterwiki-example \
   --set ingress.enabled=true \
   --set ingress.hosts[0].host="otterwiki.example.com" \
   --version 0.1.0 \
-  oci://registry-1.docker.io/redimp/otterwiki
+  otterwiki/otterwiki
 ```
 
 Please refer to the [chart](https://github.com/redimp/otterwiki/tree/main/helm) for
