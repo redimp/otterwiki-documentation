@@ -6,7 +6,7 @@ The recommend way of running An Otter Wiki is via [[docker compose|Installation#
 
 The **CPU** requirements are pretty low, you can run it on a Raspberry Pi 1 A (ARMv6). The **RAM** required is around 100MiB (according to `docker stats`). The required disk **storage** depends on the content, please keep in mind, that the backend is a git repository that never forgets: Deleting a page or an attachment does not free up any space. The wiki needs no internet access. Clients using the wiki need only access to the server running the wiki, so it can run in an environment which is _isolated_ from the internet.
 
-As URLs as dedicated domain (e.g. `wiki.domain.tld`) is required, it can not be mapped into a subfolder.
+As URL a dedicated domain (e.g. `wiki.domain.tld`) is required, the wiki can not be mapped into a subfolder.
 
 Client requirement: Javascript must be activated in your browser to use the wiki.
 
