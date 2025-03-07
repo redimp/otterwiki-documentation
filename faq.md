@@ -27,3 +27,9 @@ services:
 For podman please see the [podman troubleshooting guide](https://github.com/containers/podman/blob/main/troubleshooting.md#2-cant-use-volume-mount-get-permission-denied) for more details and instructions. 
 
 In our tests in rocky:9 docker configured the permissions even with setting the `:z` flag, please see the [docker documentation about bind mounts](https://docs.docker.com/engine/storage/bind-mounts/#configure-the-selinux-label) for more details.
+
+## Errors
+
+### 413 RequestEntityTooLarge
+
+When An Otter Wiki raises the error 413 RequestEntityTooLarge please configure the variable `MAX_FORM_MEMORY_SIZE` which is in bytes and by default `500000`, see [Configuration](/Configuration#content-and-editing-preferences).
