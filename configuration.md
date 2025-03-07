@@ -59,6 +59,7 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 | `COMMIT_MESSAGE` | `'REQUIRED'` | set `COMMIT_MESSAGE='OPTIONAL'` if commit messages are optional |
 | `RETAIN_PAGE_NAME_CASE` | `False` | set `RETAIN_PAGE_NAME_CASE=True` to
 | `GIT_WEB_SERVER` | `False` | Set to to true to allow cloning the wiki via git+http(s) |
+| `MAX_FORM_MEMORY_SIZE` | `500000` | The the maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
 
 ### Mail configuration
 
