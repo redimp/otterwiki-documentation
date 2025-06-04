@@ -108,6 +108,7 @@ variables fitting to your environment.
 | `SECRET_KEY`     | `'CHANGE ME'`   | Choose a random string that is used to encrypt user session data |
 | `REPOSITORY`     | `'/path/to/the/repository/root'` | The absolute path to the repository storing the wiki pages |
 | `SQLALCHEMY_DATABASE_URI` | `'sqlite:////path/to/the/sqlite/file'` | The absolute path to the database storing the user credentials |
+| `LOG_LEVEL`.     | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
 
 For the `SQLALCHEMY_DATABASE_URI` see <https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format>.
 
