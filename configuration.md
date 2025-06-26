@@ -112,6 +112,46 @@ variables fitting to your environment.
 
 For the `SQLALCHEMY_DATABASE_URI` see <https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format>.
 
+#### User UID running docker process
+
+Per default in both the default and the `-slim` image the process running An Otter Wiki (and accessing the files in repository) is running with `uid=33`. 
+
+##### UID in the default image
+
+To change this when using the default image, please configure the environment variables `PUID` and `PGID`. For example to run as user with `uid=1000 gid=1000` use this `compose.yaml`:
+
+```yaml
+services:
+  otterwiki:
+    image: redimp/otterwiki:2
+    restart: unless-stopped
+    env:
+      PUID: 1000
+      GUID: 1000
+    ports:
+      - 8080:80
+    volumes:
+      - ./app-data:/app-data
+```
+
+##### USER in the `-slim` image
+
+The `-slim` image is running as unpriviliged user must therefore be configured differently: In the way docker intended, with configuring the [user](https://docs.docker.com/reference/compose-file/services/#user). For example to run as user with `uid=1000 gid=1000` use this `compose.yaml`:
+
+```yaml
+services:
+  otterwiki:
+    image: redimp/otterwiki:2-slim
+    restart: unless-stopped
+    user: 1000:1000
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app-data:/app-data
+```
+
+Make sure that the configured `uid:gid` has read- and write permissions to volume mounted as `/app-data`.
+
 ### Reverse Proxy and IPs
 
 Running the docker container behind a reverse proxy will show only the IP of the reverse proxy in the log files. With setting `REAL_IP_FROM` to the ip address of the reverse proxy, the IPs of the connection clients will be logged.
