@@ -26,7 +26,15 @@ services:
 
 For podman please see the [podman troubleshooting guide](https://github.com/containers/podman/blob/main/troubleshooting.md#2-cant-use-volume-mount-get-permission-denied) for more details and instructions. 
 
-In our tests in rocky:9 docker configured the permissions even with setting the `:z` flag, please see the [docker documentation about bind mounts](https://docs.docker.com/engine/storage/bind-mounts/#configure-the-selinux-label) for more details.
+In our tests in `rocky:9 docker` configured the permissions even with setting the `:z` flag, please see the [docker documentation about bind mounts](https://docs.docker.com/engine/storage/bind-mounts/#configure-the-selinux-label) for more details.
+
+#### Caddy as reverse proxy provisioning TLS certificates
+
+In an environment with `SELINUX=enforcing` where Caddy is used as reverse proxy, it was observed that it is necessary to run
+```bash
+setsebool -P httpd_can_network_connect on
+```
+to enable Caddy to connect to the internet in order to provision proper TLS certificates. 
 
 ## Errors
 
