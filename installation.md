@@ -16,7 +16,7 @@ An Otter Wiki is published as a Docker image on Docker hub as [`redimp/otterwiki
 
 Make sure you have [docker](https://docs.docker.com/engine/install/) installed.
 
-To run an otter wiki via docker cli, listening on port 8080 and using a local directory for data persistency, use the following command:
+To run an otter wiki via docker cli, listening on port 8080 and using a local directory for data persistence, use the following command:
 ```bash
 docker run --name otterwiki \
     -p 8080:80 \
@@ -54,7 +54,7 @@ The recommended way of running An Otter Wiki is via `docker compose`.
 5. Customize the settings to your liking.
 6. It's highly recommended to use a webserver as reverse proxy to connect to  the docker process, see [Reverse Proxy](#reverse-proxy) below.
 
-Alternativly you can configure the application using environment variables, for example:
+Alternatively you can configure the application using environment variables, for example:
 
 ```yaml
 services:
@@ -168,7 +168,7 @@ of the chart.
     export OTTERWIKI_SETTINGS=$PWD/settings.cfg
     ./venv/bin/uwsgi --http 127.0.0.1:8080 --master --enable-threads --die-on-term -w otterwiki.server:app
     ```
-7. Open http://127.0.0.1:8080 in your browser.
+7. Open <http://127.0.0.1:8080> in your browser.
 8. Register your account. The first account is an admin-account with access to the application settings.
 9. Alternatively can you configure the application using the `settings.cfg`. For all configuration options please see [[Configuration]].
 10. Create a service file e.g. `/etc/systemd/system/otterwiki.service`
@@ -187,8 +187,8 @@ of the chart.
   [Install]
   WantedBy=multi-user.target
   ```
-  
-  make sure to adapt the `/path/to` and that the configured User can read and write the database and the repository folder. 
+
+Make sure to adapt the `/path/to` and that the configured user can read and write the database and the repository folder.
 
 11. Run `systemctl daemon-reload` and `systemctl start otterwiki.service`, check `systemctl status otterwiki.service` for errors.
 
@@ -204,13 +204,15 @@ client (e.g. web browser) requests to those web servers. They are useful
 when hosting multiple services on a host and make it much easier to configure
 https. Neither An Otter Wiki itself nor the in the docker image provides https.
 
-Mini how-tos for configuring Apache, NGINX and Caddy are provided below. For complete documention please check the corresponding software documention.
+Mini how-tos for configuring Apache, NGINX and Caddy are provided below. For
+more detailed informations please check the corresponding software documentation.
 
 ## NGINX
 
-This is a minimal example of a config that configures NGINX as a reverse proxy. The full documentation about NGINX as reverse proxy can be found [here](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/).
+This is a minimal example of a config that configures NGINX as a reverse proxy.
+The full documentation about NGINX as reverse proxy can be found [here](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/).
 
-It's assumed that An Otter Wiki is running either in a docker container or as a uwsgi process and listening on port 8080.
+It's assumed that An Otter Wiki is running either in a docker container or as a `uwsgi` process and listening on port 8080.
 
 ```nginx
 server {
@@ -296,4 +298,4 @@ domain.tld {
 }
 ```
 
-With a server accessible from the internet, `domain.tld` beeing a proper domain name with A/AAAA DNS records pointing to the server, caddy will [automatically](https://caddyserver.com/docs/automatic-https) serve HTTPS.
+With a server accessible from the internet, `domain.tld` being a proper domain name with A/AAAA DNS records pointing to the server, caddy will [automatically](https://caddyserver.com/docs/automatic-https) serve HTTPS.
