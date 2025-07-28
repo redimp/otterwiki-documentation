@@ -6,9 +6,9 @@ If you've made improvements that you'd like to share, don't forget, pull request
 
 Check [otterwiki/docs/custom_css_example](https://github.com/redimp/otterwiki/tree/main/docs/custom_css_example) on github for ready-to-test examples.
 
-## `custom.css`
+## `custom directory`
 
-With version **2.3.1** the template loads a `custom.css` and a `custom.js` which are empty by default. You can mount the directories into the container, for example with a `docker-compose.yaml` like this:
+With version **2.3.1** the template loads a `custom.css` and a `custom.js` which are empty by default. You can mount the directory into the container, for example with a `docker-compose.yaml` like this:
 
 ```yaml
 version: '3'
@@ -41,3 +41,6 @@ This is an example custom.css that uses the serif font
 ```
 
 ![](/Customization/a/baskervville-page.png)
+
+> [!NOTE]
+> In case of a local deployment the browser might cache the web app, so users are recommended to clear cookies and site data if the changes to `custom.js` or `custom.css` are not visible immediately even after restarting the docker
