@@ -127,7 +127,7 @@ services:
     restart: unless-stopped
     environment:
       PUID: 1000
-      GUID: 1000
+      PGID: 1000
     ports:
       - 8080:80
     volumes:
