@@ -30,6 +30,7 @@ Please read the [installation guide](/Installation) to get started, proceed to t
 ### Contributing
 
 Thank you for considering to contribute to An Otter Wiki! If you ran into an issue or want to request a feature, please reach out via <i class="fab fa-github"></i> [github](https://github.com/redimp/otterwiki/issues). Or fork the [repository](https://github.com/redimp/otterwiki/) develop the feature and submit a pull request. Detailed instructions about setting up a development environment can be found in [[Development]].
+Want to contribute to this documentation? Found a typo? Add an entry to the FAQ? Please submit a PR to the <i class="fab fa-github"></i> [otterwiki-documentation](https://github.com/redimp/otterwiki-documentation) repository.
 
 ### Licence
 
