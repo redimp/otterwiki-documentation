@@ -125,7 +125,7 @@ services:
   otterwiki:
     image: redimp/otterwiki:2
     restart: unless-stopped
-    env:
+    environment:
       PUID: 1000
       GUID: 1000
     ports:
