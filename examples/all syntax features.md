@@ -154,6 +154,18 @@ When `$a \ne 0$`, there are two solutions to `$ax^2 + bx + c = 0$` and they are
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
 ```
 
+## Mermaid diagrams
+
+Using [Mermaid](https://mermaid.js.org/) you can create diagrams and visualizations in your wiki pages, e.g.
+
+```mermaid
+graph LR
+    A[Square Rect] -- Link text --> B((Circle))
+    A --> C(Round Rect)
+    B --> D{Rhombus}
+    C --> D
+```
+
 ## Special blocks
 
 An Otter Wiki supports also some special blocks, whose syntax is derived
