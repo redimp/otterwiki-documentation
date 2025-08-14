@@ -117,10 +117,11 @@ For example you can create a new deployment with an ingress on `otterwiki.exampl
 
 ```bash
 helm install otterwiki-example \
+  --set config.SITE_NAME="My Otter Wiki" \
   --set config.SITE_DESCRIPTION="An Otter Wiki deployed with Helm" \
   --set ingress.enabled=true \
   --set ingress.hosts[0].host="otterwiki.example.com" \
-  --version 0.1.0 \
+  --version 0.1.1 \
   otterwiki/otterwiki
 ```
 
