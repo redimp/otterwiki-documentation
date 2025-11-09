@@ -86,7 +86,7 @@ An Otter Wiki can be run with `podman` and `podman-compose` in the same way as w
 
 ## The `-slim` image variant
 
-The image of An Otter Wiki runs as root user (with uid=0) and comes bundled with nginx that listens on port 80. The lighter image variant is the `-slim` image: It's based on alpine, has no nginx bundled and an uWSGI server is running as unprivileged `www-data` user (with uid=33). uWSGI serves both An Otter Wiki and the static files and listens on port 8080.
+The full image of An Otter Wiki runs as root user (with uid=0) and comes bundled with nginx that listens on port 80. The lighter image variant is the `-slim` image: It's based on alpine, has no nginx bundled and an uWSGI server is running as unprivileged `www-data` user (with uid=33). uWSGI serves both An Otter Wiki and the static files and listens on port 8080.
 
 Except for the exposes port, the images are interchangeable. For example a `docker-compose.yaml` running the most recent version of a `-slim` image:
 
@@ -101,7 +101,10 @@ services:
       - ./app-data:/app-data
 ```
 
-The `redimp/otterwiki:2-slim` image is as stable as the 'fat' image, after all it is what is running [otterwiki.com](https://otterwiki.com).
+The `redimp/otterwiki:2-slim` image is as stable as the full image, after all it is what is running [otterwiki.com](https://otterwiki.com).
+
+> [!TIP]
+> To ensure your application data directory is accessible when using the `-slim` image, make sure user ID 33 and group ID 33 have appropriate permissions. You can use the full image to initially set up this directory, then switch to the `-slim` variant. 
 
 ## Kubernetes
 
