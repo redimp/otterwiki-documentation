@@ -56,9 +56,10 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 
 | Variable                | Example    | Description    |
 | ----------------------- | ---------- | -------------- |
-| `COMMIT_MESSAGE` | `'REQUIRED'` | set `COMMIT_MESSAGE='OPTIONAL'` if commit messages are optional |
-| `RETAIN_PAGE_NAME_CASE` | `False` | set `RETAIN_PAGE_NAME_CASE=True` to
-| `GIT_WEB_SERVER` | `False` | Set to to true to allow cloning the wiki via git+http(s) |
+| `COMMIT_MESSAGE` | `'REQUIRED'` | set to `'OPTIONAL'` if commit messages should be optional |
+| `RETAIN_PAGE_NAME_CASE` | `False` | set to `True` to retain case of the page name in the filename used for storing the page |
+| `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | set to `True` to replace underscores (_) with spaces in page titles, breadcrumbs, and page index |
+| `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
 | `MAX_FORM_MEMORY_SIZE` | `1000000` | The the maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
 
 ### Mail configuration
