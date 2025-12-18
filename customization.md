@@ -16,8 +16,8 @@ Both methods work independently of each other.
 The template automatically loads several custom files which are empty by default. You can mount a directory into the container to provide the following customizations:
 - `custom.css` - custom CSS styles (from version **2.3.1**)
 - `custom.js` - custom JavaScript (from version **2.3.1**)
-- `customHead.html` - custom HTML injected into the `<head>` section (from version **2.14.5**)
-- `customBody.html` - custom HTML injected into the `<body>` section (from version **2.14.5**)
+- `customHead.html` - custom HTML injected into the `<head>` section (from version **2.15.0**)
+- `customBody.html` - custom HTML injected into the `<body>` section (from version **2.15.0**)
 
 For example, with a `docker-compose.yaml` like this:  
 ```yaml
