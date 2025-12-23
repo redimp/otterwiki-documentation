@@ -155,8 +155,8 @@ Make sure that the configured `uid:gid` has read- and write permissions to volum
 
 ### Reverse Proxy and IPs
 
-Running the docker container behind a reverse proxy will show only the IP of the reverse proxy in the log files. With setting `REAL_IP_FROM` to the ip address of the reverse proxy, the IPs of the connection clients will be logged.
+Running the docker container behind a reverse proxy will show only the IP of the reverse proxy in the log files. With setting `REAL_IP_FROM` to the ip address or network of the reverse proxy, the IPs of the connection clients will be logged.
 
-| Variable         |  Example         | Description                                  |
-|------------------|------------------|----------------------------------------------|
-| `REAL_IP_FROM`   | `'10.0.0.0/8'`   | Configure nginx to respect `real_ip_header`, see <http://nginx.org/en/docs/http/ngx_http_realip_module.html> |
+| Variable         |  Example          | Description                                  |
+|------------------|-------------------|----------------------------------------------|
+| `REAL_IP_FROM`   | `'172.20.0.0/24'` | Configure wiki to respect `X-Real-IP` header in the requests coming from this IP or network. |
