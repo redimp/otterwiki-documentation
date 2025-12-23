@@ -211,6 +211,8 @@ https. Neither An Otter Wiki itself nor the in the docker image provides https.
 Mini how-tos for configuring Apache, NGINX and Caddy are provided below. For
 more detailed informations please check the corresponding software documentation.
 
+Also check out [[Configuration]] for additional info on passing real IPs to the wiki.
+
 ## NGINX
 
 This is a minimal example of a config that configures NGINX as a reverse proxy.
@@ -227,6 +229,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
         proxy_pass http://127.0.0.1:8080;
         client_max_body_size 64M; # for attachments of a size up to 64 Mb
     }
@@ -261,14 +264,19 @@ This is a minimal example how to configure Apache as reverse proxy. Please see t
 
 It's assumed that An Otter Wiki is running either in a docker container or as a uwsgi process and listening on port 8080.
 
-```
+```apache
 <VirtualHost *:*>
   ServerName wiki.domain.tld
   ProxyPreserveHost On
   ProxyPass / http://0.0.0.0:8080/
   ProxyPassReverse / http://0.0.0.0:8080/
+  ProxyAddHeaders On
+  RequestHeader set X-Forwarded-Proto "http"
+  RequestHeader set X-Real-IP %{REMOTE_ADDR}e
 </VirtualHost>
 ```
+
+If you're using HTTPS, change `X-Forwarded-Proto "http"` to `X-Forwarded-Proto "https"` and `RequestHeader set X-Real-IP %{REMOTE_ADDR}e` to `RequestHeader set X-Real-IP %{REMOTE_ADDR}s`.
 
 ### Apache on Debian, Ubuntu and derivates
 
@@ -298,7 +306,11 @@ After [installing](https://caddyserver.com/docs/install) caddy, configure `/etc/
 
 ```
 domain.tld {
-    reverse_proxy localhost:8080
+    reverse_proxy localhost:8080 {
+        header_up Host {http.request.host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Real-IP {remote_host}
+    }
 }
 ```
 
