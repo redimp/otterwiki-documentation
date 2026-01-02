@@ -159,7 +159,7 @@ of the chart.
     ```bash
     echo "REPOSITORY='${PWD}/app-data/repository'" >> settings.cfg
     echo "SQLALCHEMY_DATABASE_URI='sqlite:///${PWD}/app-data/db.sqlite'" >> settings.cfg
-    echo "SECRET_KEY='$(python -c 'import secrets; print(secrets.token_hex())')'" >> settings.cfg
+    echo "SECRET_KEY='$(python3 -c 'import secrets; print(secrets.token_hex())')'" >> settings.cfg
     ```
 5. Create a virtual environment and install An Otter Wiki
     ```
