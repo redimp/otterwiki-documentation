@@ -41,3 +41,20 @@ to enable Caddy to connect to the internet in order to provision proper TLS cert
 ### 413 RequestEntityTooLarge
 
 When An Otter Wiki raises the error 413 RequestEntityTooLarge please configure the variable `MAX_FORM_MEMORY_SIZE` which is in bytes and by default `500000`, see [Configuration](/Configuration#content-and-editing-preferences).
+
+### Listen queue size is greater than the system max net.core.somaxconn
+
+This was reported to happen when using the `-slim` image on a Synology NAS, see [#342](https://github.com/redimp/otterwiki/issues/342). This can be fixed with increasing the value via sysctl or when using a `docker-compose.yaml` with
+
+```yaml
+services:
+  otterwiki:
+    image: redimp/otterwiki:2-slim
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./app-data:/app-data
+    sysctls:
+      - net.core.somaxconn=1024
+```
