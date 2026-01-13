@@ -85,3 +85,33 @@ services:
 ```
 
 ![](/Customization/github-ribbon.jpg)
+
+### Custom Fancy Block Styles
+
+If a non-standard style name is used for a Fancy Block, it will be rendered with the class `alert-[style name]`. This allows you to define your own styles in `custom.css`.
+
+```md
+::: extradanger
+## Watch Out!
+
+This Fancy Block has custom styles
+:::
+```
+
+You will likely need to add styles for both light and dark modes, since the dark mode styles for the base alert will override your styles for light mode.
+
+```css
+.alert-extradanger {
+    background-color: yellow;
+    border: 5px dashed black;
+    border-radius: 0;
+}
+
+.dark-mode .alert-extradanger {
+    background-color: #666600;
+    border: 5px dashed yellow;
+    border-radius: 0;
+}
+```
+
+![](/Customization/custom-fancyblock.png)
