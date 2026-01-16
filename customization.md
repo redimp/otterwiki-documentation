@@ -85,3 +85,44 @@ services:
 ```
 
 ![](/Customization/github-ribbon.jpg)
+
+## Styling individual pages or categories
+
+A data attribute set to the path is set on the `<body>` of each page (`data-page-path`) and index (`data-index-path`) to allow styling or JavaScript functionality on individual pages.
+
+The path is turned into a slug in each section, for example _My Category/My Page_ becomes `my-category/my-page`.
+
+These are some examples of potential style customisations:
+
+### Target a Specific Page
+
+Hides the sidebar on the homepage only
+
+```css
+body[data-page-path="home"] .extra-nav {
+    display: none;
+}
+```
+
+### Style all pages in a category
+
+Applies a different colour to pages in _My Category_.
+
+```css
+body[data-page-path^="my-category/"] h1 {
+    color: darkred;
+    font-weight: bold;
+}
+```
+
+### Style a Category Index
+
+Turns the index listing into a one-column list for _My Category_ only.
+
+```css
+/* body[data-index-path^="my-category/"]
+   to apply to subcategories as well*/
+body[data-index-path="my-category"] .pageindex-columns {
+  columns: 1
+}
+```
