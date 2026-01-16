@@ -96,7 +96,7 @@ These are some examples of potential style customisations:
 
 ### Target a Specific Page
 
-Hides the sidebar on the homepage only
+Hides the sidebar on the homepage.
 
 ```css
 body[data-page-path="home"] .extra-nav {
@@ -117,7 +117,10 @@ body[data-page-path^="my-category/"] h1 {
 
 ### Style a Category Index
 
-Turns the index listing into a one-column list for _My Category_ only.
+> [!NOTE]
+> The whole wiki page index has a `data-index-path` of `/`
+
+Turns the index listing into a one-column list for _My Category_.
 
 ```css
 /* body[data-index-path^="my-category/"]
