@@ -123,9 +123,9 @@ The path is turned into a slug in each section, for example _My Category/My Page
 
 These are some examples of potential style customisations:
 
-#### Target a Specific Page
+### Target a Specific Page
 
-Hides the sidebar on the homepage.
+Hides the sidebar on the homepage only
 
 ```css
 body[data-page-path="home"] .extra-nav {
@@ -133,7 +133,11 @@ body[data-page-path="home"] .extra-nav {
 }
 ```
 
+<<<<<<< HEAD
 #### Style all pages in a category
+=======
+### Style all pages in a category
+>>>>>>> 34296ed (Add a few examples of data atts)
 
 Applies a different colour to pages in _My Category_.
 
