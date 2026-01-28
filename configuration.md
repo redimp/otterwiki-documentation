@@ -64,7 +64,7 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 
 ### Mail configuration
 
-An Otter Wiki is using [Flask-Mail](https://pythonhosted.org/Flask-Mail/).
+An Otter Wiki is using [Flask-Mail](https://flask-mail.readthedocs.io/en/latest/).
 
 | Variable         |  Example        | Description                                  |
 |------------------|-----------------|----------------------------------------------|
