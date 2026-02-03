@@ -10,15 +10,18 @@ An Otter Wiki is configured in the application via the <i class="fas fa-cogs"></
 by the environment variables if they are set and second by the settings configured
 via the settings interface, which are stored in the database. In brief: `Settings Interface > Environment Variables > settings.cfg`.
 
-### Branding
+### Application Preferences
 
-| Variable         |  Example        | Description                                  |
-|------------------|-----------------|----------------------------------------------|
-| `SITE_NAME`      | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
-| `SITE_LOGO`      | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
+| Variable           |  Example        | Description                                  |
+|--------------------|-----------------|----------------------------------------------|
+| `SITE_NAME`        | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
+| `SITE_LOGO`        | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
 | `SITE_DESCRIPTION` | `'A minimalistic wiki powered by python, markdown and git.'` | The default description used in `<meta>` tags |
-| `SITE_ICON`      | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
-
+| `SITE_ICON`        | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
+| `SITE_LANG`        | `'en'` | Configures the lang attribute of the `<html>` lang used in the wiki |
+| `ROBOTS_TXT`       | `'allow'` | Configures how the wiki indicates to visiting robots whether they are allowed to crawl the content, could be `allow` or `disallow` |
+| `HOME_PAGE`         | `'My/Page'` | Configures which page is displayed when visiting the root URL (`/`), leave empty for default (`Home`) or define any page path, including special pages that start with `/-/` |
+| `HIDE_LOGO`         | `False` | Hides or shows An Otter Wiki logo in the sidebar |
 
 ### Permission configuration
 
@@ -56,11 +59,17 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 
 | Variable                | Example    | Description    |
 | ----------------------- | ---------- | -------------- |
-| `COMMIT_MESSAGE` | `'REQUIRED'` | set to `'OPTIONAL'` if commit messages should be optional |
-| `RETAIN_PAGE_NAME_CASE` | `False` | set to `True` to retain case of the page name in the filename used for storing the page |
-| `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | set to `True` to replace underscores (_) with spaces in page titles, breadcrumbs, and page index |
-| `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
+| `COMMIT_MESSAGE` | `'REQUIRED'` | Set to `'OPTIONAL'` if commit messages should be optional |
+| `RETAIN_PAGE_NAME_CASE` | `False` | Set to `True` to retain case of the page name in the filename used for storing the page |
+| `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | Set to `True` to replace underscores (`_`) with spaces in page titles, breadcrumbs, and page index |
+| `WIKILINK_STYLE` | `'LINKTITLE'` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
 | `MAX_FORM_MEMORY_SIZE` | `1000000` | The the maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
+
+### Repository Management
+
+| Variable         | Example    | Description    |
+| ---------------- | ---------- | -------------- |
+| `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
 
 ### Mail configuration
 
