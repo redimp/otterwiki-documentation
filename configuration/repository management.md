@@ -38,7 +38,7 @@ First, get the remote URL from GitHub, for this example it will be `git@github.c
 3. Go to your GitHub repository > **Settings** > **Deploy keys** > **Add deploy key**
 4. Paste your public key (`cat mywiki.pub`) into the **Key** field
 5. Check **Allow write access** if you plan to enable automatic pushes
-6. Click **Add deploy key** to save
+6. Click **Add key** to save
 
 [![](./github-add-deploy-key.png?thumbnail=640)](./github-add-deploy-key.png)
 
