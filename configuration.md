@@ -67,6 +67,8 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 
 ### Repository Management
 
+For a detailed guide on **Repository Management** settings, please follow this link: [[Repository Management|Configuration/Repository Management]]
+
 | Variable         | Example    | Description    |
 | ---------------- | ---------- | -------------- |
 | `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
