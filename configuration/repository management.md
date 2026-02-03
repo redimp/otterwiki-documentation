@@ -23,6 +23,8 @@ When setting up automated pulls, note the generated webhook URL - it's unique to
 
 Both push and pull configurations add buttons at the bottom right of the page, allowing you to test your settings.
 
+[![](./repository-management-actions.png?thumbnail=400)](./repository-management-actions.png)
+
 ### GitHub Example
 
 This example shows how to set up automatic pushing and pulling between your wiki and a GitHub repository `user/wiki`, including SSH key authorization.
@@ -37,6 +39,8 @@ First, get the remote URL from GitHub, for this example it will be `git@github.c
 4. Paste your public key (`cat mywiki.pub`) into the **Key** field
 5. Check **Allow write access** if you plan to enable automatic pushes
 6. Click **Add deploy key** to save
+
+[![](./github-add-deploy-key.png?thumbnail=640)](./github-add-deploy-key.png)
 
 > [!TIP]
 > For security reasons, you can safely delete the local key files (`mywiki` and `mywiki.pub`) after completing this setup, since An Otter Wiki stores the private key and GitHub stores the public key.
@@ -62,3 +66,5 @@ First, get the remote URL from GitHub, for this example it will be `git@github.c
 8. Paste the webhook URL into the **Payload URL** field and select `application/json` as the **Content type**
 9. Click **Add webhook** to save
 10. Test by editing or creating a file on the GitHub side - changes should be immediately pulled into the wiki
+
+[![](./github-add-webhook.png?thumbnail=640)](./github-add-webhook.png)
