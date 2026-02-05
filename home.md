@@ -8,14 +8,15 @@ This is the home of **An Otter Wiki**. A minimalistic wiki powered by python, ma
 
 ### Notable Features
 
-- Minimalistic interface with dark-mode support
+- Minimalistic interface with dark-mode support and customization options
 - Editor with tools for convenient markdown editing
 - Upload and attach files to pages or paste images directly in the editor
 - Version tracking allows to compare revisions and revert changes
 - User authentication with self-registration and password recovery
-- Extended Markdown: tables, footnotes, fancy blocks, alerts and mermaid diagrams
+- Extended Markdown: tables, footnotes, fancy blocks, alerts, formulas and mermaid diagrams
 - Customizable Sidebar: Create a menu and/or display a page index
-- (experimental) Git http server: clone, pull and push the content of your wiki
+- (experimental) Repository management: Git Web Server, automatic pushes & pulls to/from a remote
+- (experimental) Plugin support
 - A very cute Otter as logo (drawn and released by [Christy Presler](https://christypresler.com/) under CC BY 3.0)
 
 ### Try It Out
