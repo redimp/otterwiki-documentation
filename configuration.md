@@ -15,13 +15,15 @@ via the settings interface, which are stored in the database. In brief: `Setting
 | Variable           |  Example        | Description                                  |
 |--------------------|-----------------|----------------------------------------------|
 | `SITE_NAME`        | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
+| `SERVER_NAME`      | `'wiki.domain.tld'` | Set this to the domain running the wiki. In general it's advisable to be set, behind a well configured reverse proxy this is optional. Used for generating external URLs. |
 | `SITE_LOGO`        | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
-| `SITE_DESCRIPTION` | `'A minimalistic wiki powered by python, markdown and git.'` | The default description used in `<meta>` tags |
+| `SITE_DESCRIPTION` | <code>'A minimalistic wiki powered by<br/> python, markdown and git.'</code> | The default description used in `<meta>` tags |
 | `SITE_ICON`        | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
 | `SITE_LANG`        | `'en'` | Configures the lang attribute of the `<html>` lang used in the wiki |
 | `ROBOTS_TXT`       | `'allow'` | Configures how the wiki indicates to visiting robots whether they are allowed to crawl the content, could be `allow` or `disallow` |
 | `HOME_PAGE`         | `'My/Page'` | Configures which page is displayed when visiting the root URL (`/`), leave empty for default (`Home`) or define any page path, including special pages that start with `/-/` |
 | `HIDE_LOGO`         | `False` | Hides or shows An Otter Wiki logo in the sidebar |
+
 
 ### Permission configuration
 

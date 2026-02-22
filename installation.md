@@ -52,7 +52,7 @@ The recommended way of running An Otter Wiki is via `docker compose`.
 3. Access the wiki via http://127.0.0.1:8080 if run on your machine.
 4. Register your account. The first account is an admin-account with access to the application settings. The first accounts email address doesn't need to be confirmed nor has the account to be activated.
 5. Customize the settings to your liking.
-6. It's highly recommended to use a webserver as reverse proxy to connect to  the docker process, see [Reverse Proxy](#reverse-proxy) below.
+7. It's highly recommended to use a webserver as reverse proxy to connect to the docker process, see [Reverse Proxy](#reverse-proxy) below. 
 
 Alternatively you can configure the application using environment variables, for example:
 
