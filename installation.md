@@ -185,7 +185,7 @@ of the chart.
   User=www-data
   Group=www-data
   Environment=OTTERWIKI_SETTINGS=/path/to/the/settings.cfg
-  ExecStart=/path/to/an/otterwiki/env/bin/uwsgi --http 127.0.0.1:8080 --enable-threads --die-on-term -w otterwiki.server:app
+  ExecStart=/path/to/an/otterwiki/venv/bin/uwsgi --http 127.0.0.1:8080 --enable-threads --die-on-term -w otterwiki.server:app
   SyslogIdentifier=otterwiki
 
   [Install]
