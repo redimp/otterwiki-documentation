@@ -136,6 +136,8 @@ variables fitting to your environment.
 | `REPOSITORY`     | `'/path/to/the/repository/root'` | The absolute path to the repository storing the wiki pages |
 | `SQLALCHEMY_DATABASE_URI` | `'sqlite:////path/to/the/sqlite/file'` | The absolute path to the database storing the user credentials |
 | `LOG_LEVEL`      | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
+| `ADMIN_USER_EMAIL` | `'admin@example.com'` | If set, only the user with this email address will be granted admin privileges on sign-up. |
+| `RENDERER_HTML_ALLOWLIST` | `''` | Comma-separated list of additional HTML tags allowed in rendered Markdown. Leave empty to use the default allowlist. |
 
 For the `SQLALCHEMY_DATABASE_URI` see <https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format>.
 
