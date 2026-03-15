@@ -70,7 +70,7 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 | `RETAIN_PAGE_NAME_CASE` | `False` | Set to `True` to retain case of the page name in the filename used for storing the page |
 | `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | Set to `True` to replace underscores (`_`) with spaces in page titles, breadcrumbs, and page index |
 | `WIKILINK_STYLE` | `'LINKTITLE'` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
-| `MAX_FORM_MEMORY_SIZE` | `1000000` | The the maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
+| `MAX_FORM_MEMORY_SIZE` | `1000000` | The maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
 
 ### Repository Management
 
@@ -112,7 +112,7 @@ With `AUTH_METHOD='PROXY_HEADER'` an Otter Wiki expects the headers
 
 to be set by the proxy service using forward authentication.
 
-The headers `x-otterwiki-name`and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma seperated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
+The headers `x-otterwiki-name` and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma separated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
 
 A simplified proof of concept can be found on github: [otterwiki/docs/auth_examples/header-auth](https://github.com/redimp/otterwiki/tree/main/docs/auth_examples/header-auth).
 
@@ -127,7 +127,7 @@ variables fitting to your environment.
 | `SECRET_KEY`     | `'CHANGE ME'`   | Choose a random string that is used to encrypt user session data |
 | `REPOSITORY`     | `'/path/to/the/repository/root'` | The absolute path to the repository storing the wiki pages |
 | `SQLALCHEMY_DATABASE_URI` | `'sqlite:////path/to/the/sqlite/file'` | The absolute path to the database storing the user credentials |
-| `LOG_LEVEL`.     | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
+| `LOG_LEVEL`      | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
 
 For the `SQLALCHEMY_DATABASE_URI` see <https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format>.
 
