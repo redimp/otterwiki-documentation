@@ -114,6 +114,14 @@ to be set by the proxy service using forward authentication.
 
 The headers `x-otterwiki-name` and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma separated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
 
+The header names can be customized via the following variables:
+
+| Variable                    | Default                      | Description                                      |
+|-----------------------------|------------------------------|--------------------------------------------------|
+| `AUTH_HEADERS_USERNAME`     | `'x-otterwiki-name'`         | Header carrying the authenticated user's name    |
+| `AUTH_HEADERS_EMAIL`        | `'x-otterwiki-email'`        | Header carrying the authenticated user's email   |
+| `AUTH_HEADERS_PERMISSIONS`  | `'x-otterwiki-permissions'`  | Header carrying the authenticated user's permissions |
+
 A simplified proof of concept can be found on github: [otterwiki/docs/auth_examples/header-auth](https://github.com/redimp/otterwiki/tree/main/docs/auth_examples/header-auth).
 
 ### Advanced configuration
