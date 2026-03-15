@@ -36,6 +36,7 @@ via the settings interface, which are stored in the database. In brief: `Setting
 | `AUTO_APPROVAL`  | `False`         | With `AUTO_APPROVAL=True` users are approved on registration |
 | `EMAIL_NEEDS_CONFIRMATION`  | `True`         | With `EMAIL_NEEDS_CONFIRMATION=True` users have to confirm their email address |
 | `NOTIFY_ADMINS_ON_REGISTER` | `True`  | Notify admins if a new user is registered |
+| `NOTIFY_USER_ON_APPROVAL`   | `False` | Send a notification mail to users when their account has been approved by an admin |
 
 There are four types of users in the Otterwiki: `ANONYMOUS` are non logged in users.
 Users that registered via email and are logged in are `REGISTERED`, users approved via
@@ -47,15 +48,18 @@ flag can be set. Users with the `ADMIN` flag can edit (and approve) other users.
 
 | Variable                | Example    | Description    |
 | ----------------------- | ---------- | -------------- |
-| `SIDEBAR_MENUTREE_MODE` | `'SORTED'` | Mode of the sidebar, see below. |
-| `SIDEBAR_MENUTREE_MAXDEPTH` | `unlimited` | Limit the depth of the pages displayed by any number. |
+| `SIDEBAR_MENUTREE_MODE` | `'SORTED'` | Mode of the sidebar page index, see below. |
+| `SIDEBAR_MENUTREE_MAXDEPTH` | `''` | Limit the depth of the pages displayed to any number; leave empty for unlimited. |
+| `SIDEBAR_MENUTREE_FOCUS` | `'SUBTREE'` | Set to `'SUBTREE'` to focus the page index on the current subtree, or `'OFF'` to always display all pages. |
+| `SIDEBAR_MENUTREE_IGNORE_CASE` | `False` | Set to `True` to sort pages case-insensitively. Only takes effect when `RETAIN_PAGE_NAME_CASE` is enabled. |
+| `SIDEBAR_SHORTCUTS` | `'home pageindex createpage'` | Space-separated list of shortcuts shown in the sidebar. Available values: `home`, `pageindex`, `changelog`, `createpage`. Shortcuts not listed remain accessible via the `⋮` menu. |
 
 For `SIDEBAR_MENUTREE_MODE` pick one of
 
-- `NONE` (or empty) no sidebar displayed
-- `SORTED` Directories and pages, sorted
-- `DIRECTORIES_GROUPED` Directories and pages, with directories grouped first
-- `DIRECTORIES_ONLY`List directories only.
+- `''` (empty) page index not displayed
+- `SORTED` directories and pages, sorted
+- `DIRECTORIES_GROUPED` directories and pages, with directories grouped first
+- `DIRECTORIES_ONLY` list directories only
 
 ### Content and Editing Preferences
 
