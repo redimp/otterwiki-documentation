@@ -65,7 +65,8 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 
 | Variable                | Example    | Description    |
 | ----------------------- | ---------- | -------------- |
-| `COMMIT_MESSAGE` | `'REQUIRED'` | Set to `'OPTIONAL'` if commit messages should be optional |
+| `COMMIT_MESSAGE` | `'REQUIRED'` | Controls commit message behaviour: `'REQUIRED'` forces the user to enter one, `'OPTIONAL'` allows empty messages, `'DISABLED'` always uses the default commit message without prompting |
+| `DEFAULT_COMMIT_MESSAGE` | `''` | Default commit message used when `COMMIT_MESSAGE` is `'DISABLED'` or left empty when `'OPTIONAL'`. Supports `strftime` [format codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes); additionally `%P` is replaced with the page name. |
 | `RETAIN_PAGE_NAME_CASE` | `False` | Set to `True` to retain case of the page name in the filename used for storing the page |
 | `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | Set to `True` to replace underscores (`_`) with spaces in page titles, breadcrumbs, and page index |
 | `WIKILINK_STYLE` | `'LINKTITLE'` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
