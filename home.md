@@ -14,6 +14,7 @@ This is the home of **An Otter Wiki**. A minimalistic wiki powered by python, ma
 - Version tracking allows to compare revisions and revert changes
 - User authentication with self-registration and password recovery
 - Extended Markdown: tables, footnotes, fancy blocks, alerts, formulas and mermaid diagrams
+- ==New in 2.18.0== (experimental) Embeddings: DataTable, ImageFrame, InfoBox, AttachmentList.
 - Customizable Sidebar: Create a menu and/or display a page index
 - (experimental) Repository management: Git Web Server, automatic pushes & pulls to/from a remote
 - (experimental) Plugin support
