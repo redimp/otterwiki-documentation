@@ -115,7 +115,8 @@ You will likely need to add styles for both light and dark modes, since the dark
 ```
 
 ![](/Customization/custom-fancyblock.png)
-## Styling individual pages or categories
+
+### Styling individual pages or categories
 
 A data attribute set to the path is set on the `<body>` of each page (`data-page-path`) and index (`data-index-path`) to allow styling or JavaScript functionality on individual pages.
 
@@ -123,7 +124,7 @@ The path is turned into a slug in each section, for example _My Category/My Page
 
 These are some examples of potential style customisations:
 
-### Target a Specific Page
+#### Target a Specific Page
 
 Hides the sidebar on the homepage.
 
@@ -133,7 +134,7 @@ body[data-page-path="home"] .extra-nav {
 }
 ```
 
-### Style all pages in a category
+#### Style all pages in a category
 
 Applies a different colour to pages in _My Category_.
 
@@ -144,7 +145,7 @@ body[data-page-path^="my-category/"] h1 {
 }
 ```
 
-### Style a Category Index
+#### Style a Category Index
 
 > [!NOTE]
 > The whole wiki page index has a `data-index-path` of `/`
