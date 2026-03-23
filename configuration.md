@@ -10,14 +10,19 @@ An Otter Wiki is configured in the application via the <i class="fas fa-cogs"></
 by the environment variables if they are set and second by the settings configured
 via the settings interface, which are stored in the database. In brief: `Settings Interface > Environment Variables > settings.cfg`.
 
-### Branding
+### Application Preferences
 
-| Variable         |  Example        | Description                                  |
-|------------------|-----------------|----------------------------------------------|
-| `SITE_NAME`      | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
-| `SITE_LOGO`      | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
-| `SITE_DESCRIPTION` | `'A minimalistic wiki powered by python, markdown and git.'` | The default description used in `<meta>` tags |
-| `SITE_ICON`      | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
+| Variable           |  Example        | Description                                  |
+|--------------------|-----------------|----------------------------------------------|
+| `SITE_NAME`        | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
+| `SERVER_NAME`      | `'wiki.domain.tld'` | Set this to the domain running the wiki. In general it's advisable to be set, behind a well configured reverse proxy this is optional. Used for generating external URLs. |
+| `SITE_LOGO`        | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
+| `SITE_DESCRIPTION` | <code>'A minimalistic wiki powered by<br/> python, markdown and git.'</code> | The default description used in `<meta>` tags |
+| `SITE_ICON`        | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
+| `SITE_LANG`        | `'en'` | Configures the lang attribute of the `<html>` lang used in the wiki |
+| `ROBOTS_TXT`       | `'allow'` | Configures how the wiki indicates to visiting robots whether they are allowed to crawl the content, could be `allow` or `disallow` |
+| `HOME_PAGE`         | `'My/Page'` | Configures which page is displayed when visiting the root URL (`/`), leave empty for default (`Home`) or define any page path, including special pages that start with `/-/` |
+| `HIDE_LOGO`         | `False` | Hides or shows An Otter Wiki logo in the sidebar |
 
 
 ### Permission configuration
@@ -31,6 +36,7 @@ via the settings interface, which are stored in the database. In brief: `Setting
 | `AUTO_APPROVAL`  | `False`         | With `AUTO_APPROVAL=True` users are approved on registration |
 | `EMAIL_NEEDS_CONFIRMATION`  | `True`         | With `EMAIL_NEEDS_CONFIRMATION=True` users have to confirm their email address |
 | `NOTIFY_ADMINS_ON_REGISTER` | `True`  | Notify admins if a new user is registered |
+| `NOTIFY_USER_ON_APPROVAL`   | `False` | Send a notification mail to users when their account has been approved by an admin |
 
 There are four types of users in the Otterwiki: `ANONYMOUS` are non logged in users.
 Users that registered via email and are logged in are `REGISTERED`, users approved via
@@ -42,29 +48,41 @@ flag can be set. Users with the `ADMIN` flag can edit (and approve) other users.
 
 | Variable                | Example    | Description    |
 | ----------------------- | ---------- | -------------- |
-| `SIDEBAR_MENUTREE_MODE` | `'SORTED'` | Mode of the sidebar, see below. |
-| `SIDEBAR_MENUTREE_MAXDEPTH` | `unlimited` | Limit the depth of the pages displayed by any number. |
+| `SIDEBAR_MENUTREE_MODE` | `'SORTED'` | Mode of the sidebar page index, see below. |
+| `SIDEBAR_MENUTREE_MAXDEPTH` | `''` | Limit the depth of the pages displayed to any number; leave empty for unlimited. |
+| `SIDEBAR_MENUTREE_FOCUS` | `'SUBTREE'` | Set to `'SUBTREE'` to focus the page index on the current subtree, or `'OFF'` to always display all pages. |
+| `SIDEBAR_MENUTREE_IGNORE_CASE` | `False` | Set to `True` to sort pages case-insensitively. Only takes effect when `RETAIN_PAGE_NAME_CASE` is enabled. |
+| `SIDEBAR_SHORTCUTS` | `'home pageindex createpage'` | Space-separated list of shortcuts shown in the sidebar. Available values: `home`, `pageindex`, `changelog`, `createpage`. Shortcuts not listed remain accessible via the `⋮` menu. |
 
 For `SIDEBAR_MENUTREE_MODE` pick one of
 
-- `NONE` (or empty) no sidebar displayed
-- `SORTED` Directories and pages, sorted
-- `DIRECTORIES_GROUPED` Directories and pages, with directories grouped first
-- `DIRECTORIES_ONLY`List directories only.
+- `''` (empty) page index not displayed
+- `SORTED` directories and pages, sorted
+- `DIRECTORIES_GROUPED` directories and pages, with directories grouped first
+- `DIRECTORIES_ONLY` list directories only
 
 ### Content and Editing Preferences
 
 | Variable                | Example    | Description    |
 | ----------------------- | ---------- | -------------- |
-| `COMMIT_MESSAGE` | `'REQUIRED'` | set to `'OPTIONAL'` if commit messages should be optional |
-| `RETAIN_PAGE_NAME_CASE` | `False` | set to `True` to retain case of the page name in the filename used for storing the page |
-| `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | set to `True` to replace underscores (_) with spaces in page titles, breadcrumbs, and page index |
+| `COMMIT_MESSAGE` | `'REQUIRED'` | Controls commit message behaviour: `'REQUIRED'` forces the user to enter one, `'OPTIONAL'` allows empty messages, `'DISABLED'` always uses the default commit message without prompting |
+| `DEFAULT_COMMIT_MESSAGE` | `''` | Default commit message used when `COMMIT_MESSAGE` is `'DISABLED'` or left empty when `'OPTIONAL'`. Supports `strftime` [format codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes); additionally `%P` is replaced with the page name. |
+| `RETAIN_PAGE_NAME_CASE` | `False` | Set to `True` to retain case of the page name in the filename used for storing the page |
+| `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | Set to `True` to replace underscores (`_`) with spaces in page titles, breadcrumbs, and page index |
+| `WIKILINK_STYLE` | `'LINKTITLE'` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
+| `MAX_FORM_MEMORY_SIZE` | `1000000` | The maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
+
+### Repository Management
+
+For a detailed guide on **Repository Management** settings, please follow this link: [[Repository Management|Configuration/Repository Management]]
+
+| Variable         | Example    | Description    |
+| ---------------- | ---------- | -------------- |
 | `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
-| `MAX_FORM_MEMORY_SIZE` | `1000000` | The the maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
 
 ### Mail configuration
 
-An Otter Wiki is using [Flask-Mail](https://pythonhosted.org/Flask-Mail/).
+An Otter Wiki is using [Flask-Mail](https://flask-mail.readthedocs.io/en/latest/).
 
 | Variable         |  Example        | Description                                  |
 |------------------|-----------------|----------------------------------------------|
@@ -94,7 +112,15 @@ With `AUTH_METHOD='PROXY_HEADER'` an Otter Wiki expects the headers
 
 to be set by the proxy service using forward authentication.
 
-The headers `x-otterwiki-name`and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma seperated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
+The headers `x-otterwiki-name` and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma separated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
+
+The header names can be customized via the following variables:
+
+| Variable                    | Default                      | Description                                      |
+|-----------------------------|------------------------------|--------------------------------------------------|
+| `AUTH_HEADERS_USERNAME`     | `'x-otterwiki-name'`         | Header carrying the authenticated user's name    |
+| `AUTH_HEADERS_EMAIL`        | `'x-otterwiki-email'`        | Header carrying the authenticated user's email   |
+| `AUTH_HEADERS_PERMISSIONS`  | `'x-otterwiki-permissions'`  | Header carrying the authenticated user's permissions |
 
 A simplified proof of concept can be found on github: [otterwiki/docs/auth_examples/header-auth](https://github.com/redimp/otterwiki/tree/main/docs/auth_examples/header-auth).
 
@@ -109,7 +135,9 @@ variables fitting to your environment.
 | `SECRET_KEY`     | `'CHANGE ME'`   | Choose a random string that is used to encrypt user session data |
 | `REPOSITORY`     | `'/path/to/the/repository/root'` | The absolute path to the repository storing the wiki pages |
 | `SQLALCHEMY_DATABASE_URI` | `'sqlite:////path/to/the/sqlite/file'` | The absolute path to the database storing the user credentials |
-| `LOG_LEVEL`.     | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
+| `LOG_LEVEL`      | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
+| `ADMIN_USER_EMAIL` | `'admin@example.com'` | If set, only the user with this email address will be granted admin privileges on sign-up. |
+| `RENDERER_HTML_ALLOWLIST` | `''` | Comma-separated list of additional HTML tags allowed in rendered Markdown. Leave empty to use the default allowlist. |
 
 For the `SQLALCHEMY_DATABASE_URI` see <https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format>.
 
@@ -155,8 +183,8 @@ Make sure that the configured `uid:gid` has read- and write permissions to volum
 
 ### Reverse Proxy and IPs
 
-Running the docker container behind a reverse proxy will show only the IP of the reverse proxy in the log files. With setting `REAL_IP_FROM` to the ip address of the reverse proxy, the IPs of the connection clients will be logged.
+Running the docker container behind a reverse proxy will show only the IP of the reverse proxy in the log files. With setting `REAL_IP_FROM` to the ip address or network of the reverse proxy, the IPs of the connection clients will be logged.
 
-| Variable         |  Example         | Description                                  |
-|------------------|------------------|----------------------------------------------|
-| `REAL_IP_FROM`   | `'10.0.0.0/8'`   | Configure nginx to respect `real_ip_header`, see <http://nginx.org/en/docs/http/ngx_http_realip_module.html> |
+| Variable         |  Example          | Description                                  |
+|------------------|-------------------|----------------------------------------------|
+| `REAL_IP_FROM`   | `'172.20.0.0/24'` | Configure wiki to respect `X-Real-IP` header in the requests coming from this IP or network. |
