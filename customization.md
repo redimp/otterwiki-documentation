@@ -1,7 +1,6 @@
 # Customization
 
-
-## Customizing Your Copy of the Wiki
+## How to customize your wiki
 
 An Otter Wiki was not designed with the idea that user-defined styles and code might become necessary. However, since there is a need, a way to add CSS, JS and HTML has been added.
 
