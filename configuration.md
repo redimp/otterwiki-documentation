@@ -80,6 +80,12 @@ For a detailed guide on **Repository Management** settings, please follow this l
 | ---------------- | ---------- | -------------- |
 | `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
 
+### Security
+
+| Variable           | Example  | Description                                  |
+|--------------------|----------|----------------------------------------------|
+| `SECURITY_HEADERS` | `True`   | When enabled (default), the following HTTP response headers are set on every response: `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: same-origin`. Set to `False` if you need to embed the wiki in an iframe on a different origin or if your reverse proxy already sets these headers. |
+
 ### Mail configuration
 
 An Otter Wiki is using [Flask-Mail](https://flask-mail.readthedocs.io/en/latest/).
