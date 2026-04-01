@@ -85,6 +85,8 @@ For a detailed guide on **Repository Management** settings, please follow this l
 | Variable           | Example  | Description                                  |
 |--------------------|----------|----------------------------------------------|
 | `SECURITY_HEADERS` | `True`   | When enabled (default), the following HTTP response headers are set on every response: `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: same-origin`. Set to `False` if you need to embed the wiki in an iframe on a different origin or if your reverse proxy already sets these headers. |
+| `WTF_CSRF_ENABLED` | `True`   | When enabled (default), all state-changing (POST) requests are protected with CSRF tokens. This prevents cross-site request forgery attacks. Set to `False` to disable CSRF protection (not recommended). |
+| `WTF_CSRF_TIME_LIMIT` | `86400` | Time limit in seconds for CSRF tokens to be valid. Defaults to `86400` (24 hours). If users report form submission errors after leaving pages open for extended periods, consider increasing this value. |
 
 ### Mail configuration
 
