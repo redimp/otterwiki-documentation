@@ -25,6 +25,39 @@ Both push and pull configurations add buttons at the bottom right of the page, a
 
 [![](./repository-management-actions.png?thumbnail=400)](./repository-management-actions.png)
 
+### Configuration via environment variables
+
+Instead of using the **Repository Management** page, the push and pull settings can be configured via environment variables or the `settings.cfg`, see [[Configuration#repository-management|Configuration]]. For example with docker compose:
+
+```yaml
+services:
+  otterwiki:
+    image: redimp/otterwiki:2
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./app-data:/app-data
+    environment:
+      GIT_REMOTE_PUSH_ENABLED: true
+      GIT_REMOTE_PUSH_URL: git@github.com:user/wiki.git
+      GIT_REMOTE_PUSH_PRIVATE_KEY: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        ...
+        -----END OPENSSH PRIVATE KEY-----
+      GIT_REMOTE_PULL_ENABLED: true
+      GIT_REMOTE_PULL_URL: git@github.com:user/wiki.git
+      GIT_REMOTE_PULL_URL_SECURE: true
+      GIT_REMOTE_PULL_PRIVATE_KEY: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        ...
+        -----END OPENSSH PRIVATE KEY-----
+```
+
+*Please note:* Settings saved on the **Repository Management** page are stored in the database and take precedence over environment variables. If you configure the remotes via environment variables, avoid saving the form in the settings interface, otherwise the environment variables will be ignored.
+
+When pulling is configured via environment variables, the webhook URL can be copied from the **Pull webhook URL** field on the **Repository Management** page. Set `GIT_REMOTE_PULL_URL_SECURE: true` so that the webhook URL is derived from the `SECRET_KEY`, this requires the `SECRET_KEY` to be configured explicitly (with the default docker setup a random `SECRET_KEY` is generated on first start and stored in `/app-data/settings.cfg`, which works fine as long as the volume is persistent).
+
 ### GitHub Example
 
 This example shows how to set up automatic pushing and pulling between your wiki and a GitHub repository `user/wiki`, including SSH key authorization.
