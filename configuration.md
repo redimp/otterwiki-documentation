@@ -119,23 +119,34 @@ Per default an Otter Wiki uses a local database for storing authentication infor
 
 #### Authentication with `PROXY_HEADER`s
 
-With `AUTH_METHOD='PROXY_HEADER'` an Otter Wiki expects the headers
+With `AUTH_METHOD='PROXY_HEADER'` an Otter Wiki expects forwarded authentication headers to authenticate the user.
 
+By default an Otter Wiki expects the headers
 - `x-otterwiki-name`
 - `x-otterwiki-email`
 - `x-otterwiki-permissions`
 
 to be set by the proxy service using forward authentication.
-
-The headers `x-otterwiki-name` and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma separated list of permissions `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
+The headers `x-otterwiki-name` and `x-otterwiki-email` are used for receiving author information and `x-otterwiki-permissions` a comma separated list of permissions.
 
 The header names can be customized via the following variables:
 
-| Variable                    | Default                      | Description                                      |
-|-----------------------------|------------------------------|--------------------------------------------------|
-| `AUTH_HEADERS_USERNAME`     | `'x-otterwiki-name'`         | Header carrying the authenticated user's name    |
-| `AUTH_HEADERS_EMAIL`        | `'x-otterwiki-email'`        | Header carrying the authenticated user's email   |
+| Variable                    | Default                      | Description                                          |
+|-----------------------------|------------------------------|------------------------------------------------------|
+| `AUTH_HEADERS_USERNAME`     | `'x-otterwiki-name'`         | Header carrying the authenticated user's name        |
+| `AUTH_HEADERS_EMAIL`        | `'x-otterwiki-email'`        | Header carrying the authenticated user's email       |
 | `AUTH_HEADERS_PERMISSIONS`  | `'x-otterwiki-permissions'`  | Header carrying the authenticated user's permissions |
+
+
+By default, the permissions that are accepted in the header `'x-otterwiki-permissions'` are: `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
+It is possible to use role-based permissions instead by overriding the following variables:
+
+| Variable            | Default    | Description                                                            |
+|---------------------|------------|------------------------------------------------------------------------|
+| `AUTH_ROLES_READ`   | `'READ'`   | Comma separated list of roles that should have the `READ` permission   |
+| `AUTH_ROLES_WRITE`  | `'WRITE'`  | Comma separated list of roles that should have the `WRITE` permission  |
+| `AUTH_ROLES_UPLOAD` | `'UPLOAD'` | Comma separated list of roles that should have the `UPLOAD` permission |
+| `AUTH_ROLES_ADMIN`  | `'ADMIN'`  | Comma separated list of roles that should have the `ADMIN` permission  |
 
 A simplified proof of concept can be found on github: [otterwiki/docs/auth_examples/header-auth](https://github.com/redimp/otterwiki/tree/main/docs/auth_examples/header-auth).
 
