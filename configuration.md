@@ -141,12 +141,14 @@ The header names can be customized via the following variables:
 By default, the permissions that are accepted in the header `'x-otterwiki-permissions'` are: `READ`, `WRITE`, `UPLOAD` and `ADMIN`.
 It is possible to use role-based permissions instead by overriding the following variables:
 
-| Variable            | Default    | Description                                                            |
-|---------------------|------------|------------------------------------------------------------------------|
-| `AUTH_ROLES_READ`   | `'READ'`   | Comma separated list of roles that should have the `READ` permission   |
-| `AUTH_ROLES_WRITE`  | `'WRITE'`  | Comma separated list of roles that should have the `WRITE` permission  |
-| `AUTH_ROLES_UPLOAD` | `'UPLOAD'` | Comma separated list of roles that should have the `UPLOAD` permission |
-| `AUTH_ROLES_ADMIN`  | `'ADMIN'`  | Comma separated list of roles that should have the `ADMIN` permission  |
+| Variable            | Default    | Description                                            |
+|---------------------|------------|--------------------------------------------------------|
+| `AUTH_ROLES_READ`   | `'READ'`   | List of roles that should have the `READ` permission   |
+| `AUTH_ROLES_WRITE`  | `'WRITE'`  | List of roles that should have the `WRITE` permission  |
+| `AUTH_ROLES_UPLOAD` | `'UPLOAD'` | List of roles that should have the `UPLOAD` permission |
+| `AUTH_ROLES_ADMIN`  | `'ADMIN'`  | List of roles that should have the `ADMIN` permission  |
+
+> The list of roles can be comma and/or space separated, e.g. `'Admin, User'` or `'Admin User'`
 
 A simplified proof of concept can be found on github: [otterwiki/docs/auth_examples/header-auth](https://github.com/redimp/otterwiki/tree/main/docs/auth_examples/header-auth).
 
