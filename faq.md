@@ -52,7 +52,7 @@ services:
     image: redimp/otterwiki:2-slim
     restart: unless-stopped
     ports:
-      - 8080:80
+      - 8080:8080
     volumes:
       - ./app-data:/app-data
     sysctls:
