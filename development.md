@@ -35,7 +35,7 @@ Thank you for considering contributing to An Otter Wiki! If you ran into a probl
 	echo "SQLALCHEMY_DATABASE_URI='sqlite:///${PWD}/app-data/db.sqlite'" >> settings.cfg
 	echo "SECRET_KEY='$(echo $RANDOM | md5sum | head -c 16)'" >> settings.cfg
     ```
-5. Run `make` to setup a virtual environemnt and run a local server on port 8080
+5. Run `make` to setup a virtual environment and run a local server on port 8080
 	```bash
     make debug
     ```
