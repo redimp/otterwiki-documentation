@@ -17,7 +17,7 @@ Make sure to collect the parameters you've used to create and run the container 
 # stop the running container
 docker stop otterwiki
 # delete the container
-docker rm wiki
+docker rm otterwiki
 ```
 
 Next step is fetching the new image via:
