@@ -20,7 +20,6 @@ The template automatically loads several custom files which are empty by default
 
 For example, with a `docker-compose.yaml` like this:  
 ```yaml
-version: '3'
 services:
   otterwiki:
     image: redimp/otterwiki:2
