@@ -78,7 +78,7 @@ For all configuration options please see [[Configuration]].
 
 ## podman and podman-compose
 
-An Otter Wiki can be run with `podman` and `podman-compose` in the same way as with` docker` and `docker compose` please see above.
+An Otter Wiki can be run with `podman` and `podman-compose` in the same way as with `docker` and `docker compose`, please see above.
 
 > [!IMPORTANT]
 > If you are running podman in an SELinux environment, please check the
@@ -88,7 +88,7 @@ An Otter Wiki can be run with `podman` and `podman-compose` in the same way as w
 
 The full image of An Otter Wiki runs as root user (with uid=0) and comes bundled with nginx that listens on port 80. The lighter image variant is the `-slim` image: It's based on alpine, has no nginx bundled and an uWSGI server is running as unprivileged `www-data` user (with uid=33). uWSGI serves both An Otter Wiki and the static files and listens on port 8080.
 
-Except for the exposes port, the images are interchangeable. For example a `docker-compose.yaml` running the most recent version of a `-slim` image:
+Except for the exposed port, the images are interchangeable. For example a `docker-compose.yaml` running the most recent version of a `-slim` image:
 
 ```yaml
 services:
