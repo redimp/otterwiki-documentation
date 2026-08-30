@@ -40,7 +40,7 @@ to enable Caddy to connect to the internet in order to provision proper TLS cert
 
 ### 413 RequestEntityTooLarge
 
-When An Otter Wiki raises the error 413 RequestEntityTooLarge please configure the variable `MAX_FORM_MEMORY_SIZE` which is in bytes and by default `500000`, see [Configuration](/Configuration#content-and-editing-preferences).
+When An Otter Wiki raises the error 413 RequestEntityTooLarge please configure the variable `MAX_FORM_MEMORY_SIZE` which is in bytes and by default `1000000`, see [Configuration](/Configuration#content-and-editing-preferences).
 
 ### Listen queue size is greater than the system max net.core.somaxconn
 
