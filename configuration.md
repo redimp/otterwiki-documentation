@@ -69,7 +69,7 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 | `DEFAULT_COMMIT_MESSAGE` | `''` | Default commit message used when `COMMIT_MESSAGE` is `'DISABLED'` or left empty when `'OPTIONAL'`. Supports `strftime` [format codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes); additionally `%P` is replaced with the page name. |
 | `RETAIN_PAGE_NAME_CASE` | `False` | Set to `True` to retain case of the page name in the filename used for storing the page |
 | `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | Set to `True` to replace underscores (`_`) with spaces in page titles, breadcrumbs, and page index |
-| `WIKILINK_STYLE` | `''` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
+| `WIKILINK_STYLE` | `''` | Set to `'LINKTITLE'` for `[[WikiPage\|Text to display]]` format, leave empty for `[[Text to display\|WikiPage]]` format (default) |
 | `MAX_FORM_MEMORY_SIZE` | `1000000` | The maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
 
 ### Repository Management
