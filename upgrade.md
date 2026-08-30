@@ -45,7 +45,7 @@ To upgrade An Otter Wiki deployed via `docker compose`, find the folder where yo
 docker compose pull && docker compose up -d
 ```
 
-This will pull the latest image and recreate the container if nececessary, so you can reduce the downtime to a minimum.
+This will pull the latest image and recreate the container if necessary, so you can reduce the downtime to a minimum.
 
 ## podman and podman-compose
 
@@ -73,7 +73,7 @@ LATEST_RELEASE=$(git describe --tags $(git rev-list --tags --max-count=1))
 git checkout -b $LATEST_RELEASE $LATEST_RELEASE
 ```
 
-When you installed An Otter Wiki in e.g. an virtual environemt `venv` update the venv using:
+When you installed An Otter Wiki in e.g. a virtual environment `venv` update the venv using:
 ```
 ./venv/bin/pip install -U .
 ```
