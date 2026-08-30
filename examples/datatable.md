@@ -65,3 +65,41 @@ A datatable with caption, not searchable, with fixed height.
 | 11 | November  |     30 |
 | 12 | December  |     31 |
 }}
+
+## Example: from a CSV attachment
+
+A `src` pointing at a CSV attachment renders it as a datatable. This page has
+`otters.csv` attached (delimiter `;`, with a header row, both defaults).
+
+```
+{{datatable
+|src=otters.csv
+|caption=Otters
+}}
+```
+
+{{datatable
+|src=otters.csv
+|caption=Otters
+}}
+
+## Example: selecting columns with `column0`
+
+`column0` picks which columns to show using 0-based indices, so `0,2` keeps the
+first and third columns (*Species* and *Habitat*). It is the same as `columns`,
+which counts from 1 instead. An absolute `src` reads the CSV from another page;
+here it points back at this page's own attachment.
+
+```
+{{datatable
+|src=/Examples/DataTable/otters.csv
+|column0=0,2
+|caption=Species and habitat
+}}
+```
+
+{{datatable
+|src=/Examples/DataTable/otters.csv
+|column0=0,2
+|caption=Species and habitat
+}}
