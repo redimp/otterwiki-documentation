@@ -11,6 +11,22 @@ to page changes.
 > plugin and cannot find a matching hook, please open an
 > [issue](https://github.com/redimp/otterwiki/issues).
 
+## Example plugins
+
+Same example plugins live in
+[docs/plugin_examples](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples)
+in the source repository. Each is a self-contained package you can copy as a
+starting point, and they come with a `docker-compose.yaml` for trying them out
+and a test suite.
+
+- [noemojis](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_noemojis) removes all emojis from pages.
+- [htmlinjection](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_htmlinjection) demonstrates the HTML injection and per-element rendering hooks.
+- [referencingpages](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_referencingpages) shows which pages reference the current page via WikiLinks.
+- [sidebarpageindex](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_sidebarpageindex) demonstrates the sidebar page index filter and sort hooks.
+- [authorsignature](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_authorsignature) adds a footer with the original author and last editor.
+- [redlinks](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_redlinks) marks WikiLinks to non-existent pages in red, like MediaWiki's redlinks.
+
+
 ## What a plugin is
 
 A plugin is a normal, pip-installable Python package that registers one or more
@@ -160,18 +176,3 @@ A plugin implements only the hooks it needs. Grouped by purpose:
 
 - `sidebar_page_index_filter_entries(entries, mode)` filters the sidebar page index entries in place.
 - `sidebar_page_index_sort_entries(entries, mode)` sorts the sidebar page index entries in place.
-
-## Example plugins
-
-Six worked examples live in
-[docs/plugin_examples](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples)
-in the source repository. Each is a self-contained package you can copy as a
-starting point, and they come with a `docker-compose.yaml` for trying them out
-and a test suite.
-
-- [noemojis](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_noemojis) removes all emojis from pages.
-- [htmlinjection](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_htmlinjection) demonstrates the HTML injection and per-element rendering hooks.
-- [referencingpages](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_referencingpages) shows which pages reference the current page via WikiLinks.
-- [sidebarpageindex](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_sidebarpageindex) demonstrates the sidebar page index filter and sort hooks.
-- [authorsignature](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_authorsignature) adds a footer with the original author and last editor.
-- [redlinks](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/plugin_redlinks) marks WikiLinks to non-existent pages in red, like MediaWiki's redlinks.

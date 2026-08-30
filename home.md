@@ -17,7 +17,7 @@ This is the home of **An Otter Wiki**. A minimalistic wiki powered by python, ma
 - (experimental) Embeddings: [AttachmentList](/Examples/AttachmentList), [DataTable](/Examples/DataTable), [Figure](/Examples/Figure), [ImageFrame](/Examples/ImageFrame), [Include](/Examples/Include), [InfoBox](/Examples/InfoBox), [PageIndex](/Examples/PageIndex) and [Video](/Examples/Video%20Attachment).
 - Customizable Sidebar: Create a menu and/or display a page index
 - (experimental) Repository management: Git Web Server, automatic pushes & pulls to/from a remote
-- (experimental) Plugin support
+- (experimental) [Plugin support](/Plugins): extend the wiki through hooks
 - A very cute Otter as logo (drawn and released by [Christy Presler](https://christypresler.com/) under CC BY 3.0)
 
 ### Try It Out
