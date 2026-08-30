@@ -110,7 +110,33 @@ remove the plugin directory and recreate the container for a clean environment.
 
 ## Developing Plugins
 
-TODO
+The quickest way to start is to copy one of the [example plugins](#example-plugins)
+above and adapt it: each is a minimal, self-contained package with a working
+`pyproject.toml`, the `otterwiki` entry point and a test to build on.
+
+A plugin package is a directory holding the module and a `pyproject.toml`. In the
+module you implement the hooks you need as methods on a class, decorate each with
+`@hookimpl`, and register an instance with `plugin_manager.register(...)` (the
+[What a plugin is](#what-a-plugin-is) example shows the smallest version).
+Implement only the hooks you need; the [Available hooks](#available-hooks) list
+below summarises them, and `otterwiki/plugins.py` carries the full signatures.
+
+A few things worth knowing when writing a hook:
+
+- Plugins that need the Flask app, database or git storage receive them through
+  the `setup(app, db, storage)` hook; rendering-only plugins can ignore it.
+- Some hooks are **chained**, each plugin's return value feeding the next, so the
+  order plugins load in matters. The markdown and HTML pre/post-processing hooks
+  (such as `renderer_markdown_preprocess`) work this way.
+- Some hooks return the **first non-`None`** result and then stop, for example
+  `embedding_render`, so a plugin can claim a single embedding name.
+- The two `sidebar_page_index_*` hooks **mutate the entries list in place**
+  rather than returning a new one.
+
+For the full mechanism, the hookspec docstrings in
+[otterwiki/plugins.py](https://github.com/redimp/otterwiki/blob/main/otterwiki/plugins.py)
+are the reference, and the [example plugins](#example-plugins) above show each
+hook in use.
 
 ### Available hooks
 
@@ -176,3 +202,17 @@ A plugin implements only the hooks it needs. Grouped by purpose:
 
 - `sidebar_page_index_filter_entries(entries, mode)` filters the sidebar page index entries in place.
 - `sidebar_page_index_sort_entries(entries, mode)` sorts the sidebar page index entries in place.
+
+### Testing a plugin
+
+You do not need to install a plugin to test it. The example plugins use an
+`example_plugin_loader` fixture (in
+[docs/plugin_examples/tests](https://github.com/redimp/otterwiki/tree/main/docs/plugin_examples/tests))
+that loads a plugin straight from its directory and unregisters it again on
+teardown. Add a `test_<name>.py` next to the existing ones, load your plugin with
+`example_plugin_loader("plugin_<name>")`, and if it implements `setup()` call it
+on the loaded instance. Run the suite with:
+
+```bash
+OTTERWIKI_SETTINGS="" venv/bin/pytest docs/plugin_examples/tests
+```
