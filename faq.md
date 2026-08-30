@@ -36,6 +36,10 @@ setsebool -P httpd_can_network_connect on
 ```
 to enable Caddy to connect to the internet in order to provision proper TLS certificates. 
 
+### The wiki cannot be served from a subfolder
+
+An Otter Wiki requires a dedicated domain (e.g. `wiki.domain.tld`) and can not be mapped into a subfolder of a domain (e.g. `domain.tld/wiki`). See the requirements in [[Installation|Installation#requirements]].
+
 ## Errors
 
 ### 413 RequestEntityTooLarge
@@ -58,3 +62,7 @@ services:
     sysctls:
       - net.core.somaxconn=1024
 ```
+
+### Form submission fails after a tab was left open for a long time
+
+Symptom: saving a page, logging in or submitting any other form fails after the tab had been open for a long time. Cause: the CSRF token expired. CSRF protection (from version **2.20.0**) is controlled by `WTF_CSRF_TIME_LIMIT`, which defaults to `86400` seconds (24 hours). If your users run into this regularly, raise the value, see [[Configuration|Configuration#security]]. Do not work around it by disabling `WTF_CSRF_ENABLED`, that turns off the CSRF protection entirely.
