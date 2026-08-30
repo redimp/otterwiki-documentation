@@ -5,9 +5,13 @@ This pages describes how to upgrade An Otter Wiki to the latest version. The pro
 > [!IMPORTANT]
 > **Minor version upgrades, e.g. from 2.x to 2.y are effortless.**
 
-If a new version does not work as expected, you can just roll back to the version you previously used.
+If a new version does not work as expected, you can just roll back to the version you previously used. This is safe: the preferences you set through the settings interface live in `/app-data/db.sqlite`, not in the image. Pulling an older tag restores the previous behaviour without losing your configuration.
 
 Check the [CHANGELOG](https://github.com/redimp/otterwiki/blob/main/CHANGELOG.md) for information about fixes and new feature of recent releases.
+
+## Choosing the image variant
+
+An Otter Wiki is published both as the full `redimp/otterwiki:2` image and the lighter `redimp/otterwiki:2-slim` variant, see [[the -slim image variant|Installation#the-slim-image-variant]] for the differences between them. The two are interchangeable, but mind the port when switching: the `-slim` image listens only on port 8080, while the full image listens on both port 80 and port 8080. A port mapping onto the container's port 8080, for example `-p 8080:8080`, therefore works with either variant. A mapping onto port 80, like `-p 8080:80`, works only with the full image, so change it to the container's port 8080 before switching to `-slim`.
 
 ## docker cli
 
