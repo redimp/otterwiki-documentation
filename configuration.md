@@ -31,7 +31,7 @@ via the settings interface, which are stored in the database. In brief: `Setting
 |------------------|-----------------|----------------------------------------------|
 | `READ_ACCESS`    | `'ANONYMOUS'`   | Read access to wiki pages and attachments    |
 | `WRITE_ACCESS`   | `'REGISTERED'`  | Write access to wiki pages                   |
-| `ATTACHMENT_ACCESS` | `'APPROVED'` | Write acccess to attachments                 |
+| `ATTACHMENT_ACCESS` | `'APPROVED'` | Write access to attachments                  |
 | `DISABLE_REGISTRATION` | `False` | With `DISABLE_REGISTRATION=True` new users can not sign-up for a new account |
 | `AUTO_APPROVAL`  | `False`         | With `AUTO_APPROVAL=True` users are approved on registration |
 | `EMAIL_NEEDS_CONFIRMATION`  | `True`         | With `EMAIL_NEEDS_CONFIRMATION=True` users have to confirm their email address |
