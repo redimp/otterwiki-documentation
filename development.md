@@ -50,3 +50,9 @@ Thank you for considering contributing to An Otter Wiki! If you ran into a probl
 	make coverage
 	```
 	and check `coverage_html/index.html` for detailed information.
+
+## Writing plugins
+
+An Otter Wiki can be extended with plugins that hook into rendering, templates
+and repository events. See [[Developing Plugins|Plugins#developing-plugins]] for
+how to write and test your own.
