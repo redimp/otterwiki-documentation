@@ -12,30 +12,30 @@ via the settings interface, which are stored in the database. In brief: `Setting
 
 ### Application Preferences
 
-| Variable           |  Example        | Description                                  |
-|--------------------|-----------------|----------------------------------------------|
-| `SITE_NAME`        | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
-| `SERVER_NAME`      | `'wiki.domain.tld'` | Set this to the domain running the wiki. In general it's advisable to be set, behind a well configured reverse proxy this is optional. Used for generating external URLs. |
-| `SITE_LOGO`        | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
-| `SITE_DESCRIPTION` | <code>'A minimalistic wiki powered by<br/> python, markdown and git.'</code> | The default description used in `<meta>` tags |
-| `SITE_ICON`        | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
-| `SITE_LANG`        | `'en'` | Configures the lang attribute of the `<html>` lang used in the wiki |
-| `ROBOTS_TXT`       | `'allow'` | Configures how the wiki indicates to visiting robots whether they are allowed to crawl the content, could be `allow` or `disallow` |
-| `HOME_PAGE`         | `'My/Page'` | Configures which page is displayed when visiting the root URL (`/`), leave empty for default (`Home`) or define any page path, including special pages that start with `/-/` |
-| `HIDE_LOGO`         | `False` | Hides or shows An Otter Wiki logo in the sidebar |
+| Variable           | Default | Example        | Description                                  |
+|--------------------|---------|----------------|----------------------------------------------|
+| `SITE_NAME`        | `'An Otter Wiki'` | `'Otterwiki'`   | The `SITE_NAME` displayed on every page and email |
+| `SERVER_NAME`      | `''` | `'wiki.domain.tld'` | Set this to the domain running the wiki. In general it's advisable to be set, behind a well configured reverse proxy this is optional. Used for generating external URLs. |
+| `SITE_LOGO`        | `''` | `'/Home/a/logo.png'` | Customize navbar logo url (can be a page attachment) |
+| `SITE_DESCRIPTION` | `''` | <code>'A minimalistic wiki powered by<br/> python, markdown and git.'</code> | The default description used in `<meta>` tags |
+| `SITE_ICON`        | `''` | `'/Home/a/favicon-32x32.png'` | Configure via an url to the image that is displayed as favicon (tab icon, URL icon, bookmark icon). This can be an attachment |
+| `SITE_LANG`        | `'en'` | `'de'` | Configures the lang attribute of the `<html>` lang used in the wiki |
+| `ROBOTS_TXT`       | `'allow'` | `'disallow'` | Configures how the wiki indicates to visiting robots whether they are allowed to crawl the content, could be `allow` or `disallow` |
+| `HOME_PAGE`         | `''` | `'My/Page'` | Configures which page is displayed when visiting the root URL (`/`), leave empty for default (`Home`) or define any page path, including special pages that start with `/-/` |
+| `HIDE_LOGO`         | `False` | `True` | Hides or shows An Otter Wiki logo in the sidebar |
 
 
 ### Permission configuration
 
-| Variable         |  Example        | Description                                  |
+| Variable         | Default         | Description                                  |
 |------------------|-----------------|----------------------------------------------|
-| `READ_ACCESS`    | `'ANONYMOUS'`   | Read access to wiki pages and attachments    |
-| `WRITE_ACCESS`   | `'REGISTERED'`  | Write access to wiki pages                   |
-| `ATTACHMENT_ACCESS` | `'APPROVED'` | Write access to attachments                  |
+| `READ_ACCESS`    | `'ANONYMOUS'`   | Read access to wiki pages and attachments, one of `'ANONYMOUS'`, `'REGISTERED'` or `'APPROVED'` |
+| `WRITE_ACCESS`   | `'ANONYMOUS'`   | Write access to wiki pages, one of `'ANONYMOUS'`, `'REGISTERED'` or `'APPROVED'` |
+| `ATTACHMENT_ACCESS` | `'ANONYMOUS'` | Write access to attachments, one of `'ANONYMOUS'`, `'REGISTERED'` or `'APPROVED'` |
 | `DISABLE_REGISTRATION` | `False` | With `DISABLE_REGISTRATION=True` new users can not sign-up for a new account |
-| `AUTO_APPROVAL`  | `False`         | With `AUTO_APPROVAL=True` users are approved on registration |
+| `AUTO_APPROVAL`  | `True`          | With `AUTO_APPROVAL=True` users are approved on registration |
 | `EMAIL_NEEDS_CONFIRMATION`  | `True`         | With `EMAIL_NEEDS_CONFIRMATION=True` users have to confirm their email address |
-| `NOTIFY_ADMINS_ON_REGISTER` | `True`  | Notify admins if a new user is registered |
+| `NOTIFY_ADMINS_ON_REGISTER` | `False` | Notify admins if a new user is registered |
 | `NOTIFY_USER_ON_APPROVAL`   | `False` | Send a notification mail to users when their account has been approved by an admin |
 
 There are four types of users in the Otterwiki: `ANONYMOUS` are non logged in users.
@@ -46,7 +46,7 @@ flag can be set. Users with the `ADMIN` flag can edit (and approve) other users.
 
 ### Sidebar Preferences
 
-| Variable                | Example    | Description    |
+| Variable                | Default    | Description    |
 | ----------------------- | ---------- | -------------- |
 | `SIDEBAR_MENUTREE_MODE` | `'SORTED'` | Mode of the sidebar page index, see below. |
 | `SIDEBAR_MENUTREE_MAXDEPTH` | `''` | Limit the depth of the pages displayed to any number; leave empty for unlimited. |
@@ -63,33 +63,33 @@ For `SIDEBAR_MENUTREE_MODE` pick one of
 
 ### Content and Editing Preferences
 
-| Variable                | Example    | Description    |
+| Variable                | Default    | Description    |
 | ----------------------- | ---------- | -------------- |
 | `COMMIT_MESSAGE` | `'REQUIRED'` | Controls commit message behaviour: `'REQUIRED'` forces the user to enter one, `'OPTIONAL'` allows empty messages, `'DISABLED'` always uses the default commit message without prompting |
 | `DEFAULT_COMMIT_MESSAGE` | `''` | Default commit message used when `COMMIT_MESSAGE` is `'DISABLED'` or left empty when `'OPTIONAL'`. Supports `strftime` [format codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes); additionally `%P` is replaced with the page name. |
 | `RETAIN_PAGE_NAME_CASE` | `False` | Set to `True` to retain case of the page name in the filename used for storing the page |
 | `TREAT_UNDERSCORE_AS_SPACE_FOR_TITLES` | `False` | Set to `True` to replace underscores (`_`) with spaces in page titles, breadcrumbs, and page index |
-| `WIKILINK_STYLE` | `'LINKTITLE'` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
+| `WIKILINK_STYLE` | `''` | Set to `'LINKTITLE'` for `[[WikiPage|Text to display]]` format, leave empty for `[[Text to display|WikiPage]]` format (default) |
 | `MAX_FORM_MEMORY_SIZE` | `1000000` | The maximum size of a submitted form, see the [Flask documentation](https://flask.palletsprojects.com/en/stable/config/#MAX_FORM_MEMORY_SIZE). Increase this if you have really large pages to edit and save. |
 
 ### Repository Management
 
 For a detailed guide on **Repository Management** settings, please follow this link: [[Repository Management|Configuration/Repository Management]]
 
-| Variable         | Example    | Description    |
-| ---------------- | ---------- | -------------- |
-| `GIT_WEB_SERVER` | `False` | Set to to `True` to allow cloning the wiki via git+http(s) |
-| `GIT_REMOTE_PUSH_ENABLED` | `False` | Set to `True` to enable automatic pushing to an SSH remote whenever the wiki changes |
-| `GIT_REMOTE_PUSH_URL` | `'git@github.com:user/wiki.git'` | The SSH remote the wiki is pushed to |
-| `GIT_REMOTE_PUSH_PRIVATE_KEY` | `'-----BEGIN OPENSSH ...'` | The SSH private key used when pushing. Leave empty if authorization is handled externally |
-| `GIT_REMOTE_PULL_ENABLED` | `False` | Set to `True` to enable pulling from an SSH remote, triggered via a webhook |
-| `GIT_REMOTE_PULL_URL` | `'git@github.com:user/wiki.git'` | The SSH remote the wiki pulls from |
-| `GIT_REMOTE_PULL_PRIVATE_KEY` | `'-----BEGIN OPENSSH ...'` | The SSH private key used when pulling. Leave empty if authorization is handled externally |
-| `GIT_REMOTE_PULL_URL_SECURE` | `True` | Set to `True` to derive the pull webhook URL from the `SECRET_KEY`. Recommended, the default `False` only exists for backwards compatibility with webhook URLs generated by older releases |
+| Variable         | Default | Example    | Description    |
+| ---------------- | ------- | ---------- | -------------- |
+| `GIT_WEB_SERVER` | `False` | `True` | Set to to `True` to allow cloning the wiki via git+http(s) |
+| `GIT_REMOTE_PUSH_ENABLED` | `False` | `True` | Set to `True` to enable automatic pushing to an SSH remote whenever the wiki changes |
+| `GIT_REMOTE_PUSH_URL` | `''` | `'git@github.com:user/wiki.git'` | The SSH remote the wiki is pushed to |
+| `GIT_REMOTE_PUSH_PRIVATE_KEY` | `''` | `'-----BEGIN OPENSSH ...'` | The SSH private key used when pushing. Leave empty if authorization is handled externally |
+| `GIT_REMOTE_PULL_ENABLED` | `False` | `True` | Set to `True` to enable pulling from an SSH remote, triggered via a webhook |
+| `GIT_REMOTE_PULL_URL` | `''` | `'git@github.com:user/wiki.git'` | The SSH remote the wiki pulls from |
+| `GIT_REMOTE_PULL_PRIVATE_KEY` | `''` | `'-----BEGIN OPENSSH ...'` | The SSH private key used when pulling. Leave empty if authorization is handled externally |
+| `GIT_REMOTE_PULL_URL_SECURE` | `False` | `True` | Set to `True` to derive the pull webhook URL from the `SECRET_KEY`. Recommended, the default `False` only exists for backwards compatibility with webhook URLs generated by older releases |
 
 ### Security
 
-| Variable           | Example  | Description                                  |
+| Variable           | Default  | Description                                  |
 |--------------------|----------|----------------------------------------------|
 | `SECURITY_HEADERS` | `True`   | When enabled (default), the following HTTP response headers are set on every response: `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: same-origin`. Set to `False` if you need to embed the wiki in an iframe on a different origin or if your reverse proxy already sets these headers. |
 | `WTF_CSRF_ENABLED` | `True`   | When enabled (default), all state-changing (POST) requests are protected with CSRF tokens. This prevents cross-site request forgery attacks. Set to `False` to disable CSRF protection (not recommended). |
@@ -99,21 +99,21 @@ For a detailed guide on **Repository Management** settings, please follow this l
 
 An Otter Wiki is using [Flask-Mail](https://flask-mail.readthedocs.io/en/latest/).
 
-| Variable         |  Example        | Description                                  |
-|------------------|-----------------|----------------------------------------------|
-| `MAIL_DEFAULT_SENDER` | `'otterwiki@example.com'` | The sender address of all mails |
-| `MAIL_SERVER`    | `'smtp.googlemail.com'` | The smtp server address              |
-| `MAIL_PORT`      | `465`           | The smtp server port                         |
-| `MAIL_USERNAME`  | `'USERNAME'`    | Username for the mail account                |
-| `MAIL_PASSWORD`  | `'PASSWORD'`    | Password for the mail account                |
-| `MAIL_USE_TLS`   | `False`         | Use TLS encrytion                            |
-| `MAIL_USE_SSL`   | `True`          | Use SSL encryption                           |
+| Variable         | Default | Example         | Description                                  |
+|------------------|---------|-----------------|----------------------------------------------|
+| `MAIL_DEFAULT_SENDER` | `'otterwiki@YOUR.ORGANIZATION.TLD'` | `'otterwiki@example.com'` | The sender address of all mails |
+| `MAIL_SERVER`    | `''`    | `'smtp.googlemail.com'` | The smtp server address              |
+| `MAIL_PORT`      | `''`    | `465`           | The smtp server port                         |
+| `MAIL_USERNAME`  | `''`    | `'USERNAME'`    | Username for the mail account                |
+| `MAIL_PASSWORD`  | `''`    | `'PASSWORD'`    | Password for the mail account                |
+| `MAIL_USE_TLS`   | `False` | `True`          | Use TLS encryption                           |
+| `MAIL_USE_SSL`   | `False` | `True`          | Use SSL encryption                           |
 
 ### Authentication configuration
 
-| Variable         |  Example        | Description                                  |
-|------------------|-----------------|----------------------------------------------|
-| `AUTH_METHOD` | `'SIMPLE'` | See below. |
+| Variable         | Default | Example        | Description                                  |
+|------------------|---------|----------------|----------------------------------------------|
+| `AUTH_METHOD` | `''` | `'PROXY_HEADER'` | An empty value (or `'SIMPLE'`) uses the local database, see below. |
 
 Per default an Otter Wiki uses a local database for storing authentication information.
 
@@ -156,14 +156,14 @@ This applies only when you create the `settings.cfg` manually. Create your
 `settings.cfg` based upon the `settings.cfg.skeleton` and set the
 variables fitting to your environment.
 
-| Variable         |  Example        | Description                                  |
-|------------------|-----------------|----------------------------------------------|
-| `SECRET_KEY`     | `'CHANGE ME'`   | Choose a random string that is used to encrypt user session data |
-| `REPOSITORY`     | `'/path/to/the/repository/root'` | The absolute path to the repository storing the wiki pages |
-| `SQLALCHEMY_DATABASE_URI` | `'sqlite:////path/to/the/sqlite/file'` | The absolute path to the database storing the user credentials |
-| `LOG_LEVEL`      | `'DEBUG'`       | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
-| `ADMIN_USER_EMAIL` | `'admin@example.com'` | If set, only the user with this email address will be granted admin privileges on sign-up. |
-| `RENDERER_HTML_ALLOWLIST` | `''` | Comma-separated list of additional HTML tags allowed in rendered Markdown. Leave empty to use the default allowlist. |
+| Variable         | Default | Example         | Description                                  |
+|------------------|---------|-----------------|----------------------------------------------|
+| `SECRET_KEY`     | `'CHANGE ME'` | `'a random string of at least 16 characters'` | Choose a random string that is used to encrypt user session data |
+| `REPOSITORY`     | `''` | `'/path/to/the/repository/root'` | The absolute path to the repository storing the wiki pages |
+| `SQLALCHEMY_DATABASE_URI` | `'sqlite:///:memory:'` | `'sqlite:////path/to/the/sqlite/file'` | The absolute path to the database storing the user credentials |
+| `LOG_LEVEL`      | `'INFO'` | `'DEBUG'`      | Set the log level to one of `'DEBUG'`, `'INFO'`, `'WARNING'`, `'ERROR'`. |
+| `ADMIN_USER_EMAIL` | `''` | `'admin@example.com'` | If set, only the user with this email address will be granted admin privileges on sign-up. |
+| `RENDERER_HTML_ALLOWLIST` | `''` | `'iframe,section'` | Comma-separated list of additional HTML tags allowed in rendered Markdown. Leave empty to use the default allowlist. |
 
 For the `SQLALCHEMY_DATABASE_URI` see <https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/#connection-uri-format>.
 
