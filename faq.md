@@ -66,3 +66,15 @@ services:
 ### Form submission fails after a tab was left open for a long time
 
 Symptom: saving a page, logging in or submitting any other form fails after the tab had been open for a long time. Cause: the CSRF token expired. CSRF protection (from version **2.20.0**) is controlled by `WTF_CSRF_TIME_LIMIT`, which defaults to `86400` seconds (24 hours). If your users run into this regularly, raise the value, see [[Configuration|Configuration#security]]. Do not work around it by disabling `WTF_CSRF_ENABLED`, that turns off the CSRF protection entirely.
+
+## Administration
+
+### I locked myself out
+
+Symptom: nobody can log into an admin account any more, for example a forgotten admin password, a deleted admin user, or a mail server that is down so the password reset email never arrives. Fix: use the [[command line interface|CLI]], which needs neither a browser nor a working login. Generate a fresh password for your admin user:
+
+```
+docker compose exec -u www-data otterwiki flask user password you@example.com --generate
+```
+
+The command prints a new password to log in with. If no admin user is left, create one first with `flask user create you@example.com "You" -p admin`. See the [[CLI]] page for running these commands from a source install and for the full command reference.
