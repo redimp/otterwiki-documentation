@@ -88,11 +88,10 @@ Short options `-f` (flags) and `-p` (permissions) also work.
 
 > [!WARNING]
 > `--flags` and `--permissions` **overwrite** the current values rather than
-> adding to them. To make someone an admin without dropping their other
-> attributes, pass the full set you want.
+> adding to them.
 
 ```
-flask user edit user@example.com --new-name="Jane Roe" --permissions=read,write,upload
+flask user edit user@example.com --new-name="Jane Doe" --permissions=read,write,upload
 ```
 
 ### Delete a user

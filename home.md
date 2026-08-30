@@ -27,7 +27,7 @@ This is the home of **An Otter Wiki**. A minimalistic wiki powered by python, ma
 
 ### Getting Started
 
-Ready to set up your own instance? Follow the [installation guide](/Installation) to set up your wiki. For detailed information about the configuration, consult our [configuration guide](/Configuration).
+Ready to set up your own instance? Follow the [installation guide](/Installation) to set up your wiki. For detailed information about the configuration, consult our [configuration guide](/Configuration). Users can be managed, and admin access recovered, from the [command line interface](/CLI).
 
 ### Contributing
 
