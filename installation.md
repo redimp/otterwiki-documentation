@@ -124,7 +124,7 @@ helm install otterwiki-example \
   --set config.SITE_DESCRIPTION="An Otter Wiki deployed with Helm" \
   --set ingress.enabled=true \
   --set ingress.hosts[0].host="otterwiki.example.com" \
-  --version 0.1.1 \
+  --version 0.1.4 \
   otterwiki/otterwiki
 ```
 
