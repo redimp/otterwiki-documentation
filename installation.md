@@ -1,10 +1,10 @@
 # Installation
 
-The recommend way of running An Otter Wiki is via [[docker compose|Installation#using-docker-compose]]. For deploying in kubernetes via [[Helm|Installation#kubernetes]].
+The recommended way of running An Otter Wiki is via [[docker compose|Installation#using-docker-compose]]. Altenativelly, for deploying in kubernetes via [[Helm|Installation#kubernetes]].
 
 ## Requirements
 
-The **CPU** requirements are pretty low, you can run it on a Raspberry Pi 1 A (ARMv6). The **RAM** required is around 100MiB (according to `docker stats`). The required disk **storage** depends on the content, please keep in mind, that the backend is a git repository that never forgets: Deleting a page or an attachment does not free up any space. The wiki needs no internet access. Clients using the wiki need only access to the server running the wiki, so it can run in an environment which is _isolated_ from the internet.
+The **CPU** requirements are pretty low, you can run it on a Raspberry Pi 1 A (ARMv6). The **RAM** required is around 100MiB (according to `docker stats`). The required disk **storage** depends on the content, please keep in mind, that the backend is a git repository that never forgets: Deleting a page or an attachment does not free up any space. Once installed, the wiki needs no internet access. Clients using the wiki need only access to the server running the wiki, so it can run in an environment which is _isolated_ from the internet.
 
 As URL a dedicated domain (e.g. `wiki.domain.tld`) is required, the wiki can not be mapped into a subfolder.
 
@@ -206,7 +206,7 @@ If you want to skip the reverse proxy consider to bind uwsgi not to just the loc
 A reverse proxy is a server that sits in front of web servers and forwards
 client (e.g. web browser) requests to those web servers. They are useful
 when hosting multiple services on a host and make it much easier to configure
-https. Neither An Otter Wiki itself nor the in the docker image provides https.
+https. Neither An Otter Wiki itself nor the NGINX in the docker image provides https.
 
 Mini how-tos for configuring Apache, NGINX and Caddy are provided below. For
 more detailed informations please check the corresponding software documentation.
