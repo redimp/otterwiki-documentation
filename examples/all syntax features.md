@@ -9,7 +9,7 @@ View Source</span> or click [here](/Examples/All%20Syntax%20Features/source).
 
 ## Markdown paragraphs and text formatting
 
-In markdown paragraphs are seperated by a blank line.
+In markdown paragraphs are separated by a blank line.
 
 Without an empty
 line, a block of
@@ -22,7 +22,7 @@ or **_bold and italic_**. Or go wild and ==mark== or ~~strike out~~ words.
 An Otter Wiki stores all pages in UTF-8 in a git repository. With UTF-8 you get emojis
 like 🥳 and 🎆, that all modern browsers can display.
 
-If you don't want to user a header for seperating paragraphs,
+If you don't want to use a header for separating paragraphs,
 or a header is just not enough, add a horizontal line:
 
 ---
@@ -74,13 +74,13 @@ And a task list
 - [ ] a unchecked item
 - [x] and **bold** checked item
 
-*The task list can only be mofied by editing it, not by clicking the checkboxes while viewing it.*
+*The task list can only be modified by editing it, not by clicking the checkboxes while viewing it.*
 
 ## Tables
 
-A wide table with different aligend columns:
+A wide table with different aligned columns:
 
-| Very wide column without expliciit alignment | Left aligned column | Centered column | Rght aligned Column |
+| Very wide column without explicit alignment | Left aligned column | Centered column | Right aligned Column |
 | -------------------------------------------- |:------------------- |:---------------:| -------------------:|
 | Cell with Text                               | Cell with Text      |  Cell with Text |      Cell with Text |
 | Cell with <br> two lines.                    | Cell with Text      |  Cell with Text |      Cell with Text |
@@ -90,7 +90,7 @@ A table with some formatting and an emoji.
 
 | Alpha    | Bravo             | Charlie  |
 | -------- | ----------------- | -------- |
-| `D`elta  | Echo              | Foxtrott |
+| `D`elta  | Echo              | Foxtrot  |
 | Golf     | **Hotel**         | India    |
 | Juliett  | Kilo              | _Lima_   |
 | ~~Mike~~ | November          | Oscar    |
@@ -119,16 +119,16 @@ This and many other examples for syntax highlighting can be found in [[Examples/
 
 ## Lists can nest blocks
 
-List can nest lists and other block.
+List can nest lists and other blocks.
 
 1. For example
     * an unordered list
     * with two items
 2. or
-    1. an new level
+    1. a new level
     2. of an ordered list
     3. with three items.
-3. Somtimes you might have to add
+3. Sometimes you might have to add
 
 	an entire paragraph to a list. To do that indent it with 
     4 spaces and add an empty line before and after the paragraph.
@@ -187,7 +187,7 @@ Blocks with summary, that unfold the details on click:
 
 ---
 
-In case you have to highligh important informations,
+In case you have to highlight important information,
 An Otter Wiki provides special blocks in different flavors.
 
 :::info
