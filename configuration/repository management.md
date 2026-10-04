@@ -54,6 +54,35 @@ services:
         -----END OPENSSH PRIVATE KEY-----
 ```
 
+Instead of putting the private keys into the environment, they can be read from files via `GIT_REMOTE_PUSH_PRIVATE_KEY_FILE` and `GIT_REMOTE_PULL_PRIVATE_KEY_FILE` (available since v2.25.0). This works well with docker secrets or any mounted file:
+
+```yaml
+services:
+  otterwiki:
+    image: redimp/otterwiki:2
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./app-data:/app-data
+    environment:
+      GIT_REMOTE_PUSH_ENABLED: true
+      GIT_REMOTE_PUSH_URL: git@github.com:user/wiki.git
+      GIT_REMOTE_PUSH_PRIVATE_KEY_FILE: /run/secrets/wiki_ssh_key
+      GIT_REMOTE_PULL_ENABLED: true
+      GIT_REMOTE_PULL_URL: git@github.com:user/wiki.git
+      GIT_REMOTE_PULL_URL_SECURE: true
+      GIT_REMOTE_PULL_PRIVATE_KEY_FILE: /run/secrets/wiki_ssh_key
+    secrets:
+      - wiki_ssh_key
+
+secrets:
+  wiki_ssh_key:
+    file: ./mywiki
+```
+
+The file must be readable by the user running An Otter Wiki, in the docker image this is `www-data` with the uid `33` (or the configured `PUID`). If `GIT_REMOTE_PUSH_PRIVATE_KEY` or `GIT_REMOTE_PULL_PRIVATE_KEY` is set (via environment, `settings.cfg` or the **Repository Management** page), it takes precedence over the corresponding `_FILE` setting.
+
 *Please note:* Settings saved on the **Repository Management** page are stored in the database and take precedence over environment variables. If you configure the remotes via environment variables, avoid saving the form in the settings interface, otherwise the environment variables will be ignored.
 
 When pulling is configured via environment variables, the webhook URL can be copied from the **Pull webhook URL** field on the **Repository Management** page. Set `GIT_REMOTE_PULL_URL_SECURE: true` so that the webhook URL is derived from the `SECRET_KEY`, this requires the `SECRET_KEY` to be configured explicitly (with the default docker setup a random `SECRET_KEY` is generated on first start and stored in `/app-data/settings.cfg`, which works fine as long as the volume is persistent).
@@ -76,7 +105,7 @@ First, get the remote URL from GitHub, for this example it will be `git@github.c
 [![](./github-add-deploy-key.png?thumbnail=640)](./github-add-deploy-key.png)
 
 > [!TIP]
-> For security reasons, you can safely delete the local key files (`mywiki` and `mywiki.pub`) after completing this setup, since An Otter Wiki stores the private key and GitHub stores the public key.
+> For security reasons, you can safely delete the local key files (`mywiki` and `mywiki.pub`) after completing this setup, since An Otter Wiki stores the private key and GitHub stores the public key. Keep the private key if you configure it via `GIT_REMOTE_PUSH_PRIVATE_KEY_FILE` or `GIT_REMOTE_PULL_PRIVATE_KEY_FILE`.
 
 #### Automatic Pushing
 
